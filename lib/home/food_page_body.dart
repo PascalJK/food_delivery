@@ -52,7 +52,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         // Indicator
         DotsIndicator(
           dotsCount: 5,
-          position: pageController.page!.toInt(),
+          position: _currentPageValue.toInt(),
           decorator: DotsDecorator(
             size: const Size.square(9),
             activeColor: AppColors.mainColor,
