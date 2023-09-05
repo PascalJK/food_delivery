@@ -4,6 +4,7 @@ import 'package:food_delivery/components/icon_text.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
 import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/utils/dimentions.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({super.key});
@@ -40,7 +41,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         // PageView
         Container(
-          height: 320,
+          height: Dimentions.pageView,
           child: PageView.builder(
             controller: pageController,
             itemCount: 5,
@@ -97,7 +98,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: 220,
+            height: Dimentions.pageViewContainer,
             margin: const EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
@@ -111,7 +112,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 120,
+              height: Dimentions.pageViewTextContainer,
               margin: const EdgeInsets.only(right: 20, left: 20, bottom: 30),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
