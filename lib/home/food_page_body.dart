@@ -101,7 +101,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             height: Dimensions.pageViewContainer,
             margin: const EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimensions.radius30),
               color: index.isEven ? const Color(0xff69c5df) : const Color(0xff9294cc),
               image: const DecorationImage(
                 image: AssetImage('assets/image/food0.png'),
@@ -115,7 +115,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               height: Dimensions.pageViewTextContainer,
               margin: const EdgeInsets.only(right: 20, left: 20, bottom: 30),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(Dimensions.radius15),
                   color: Colors.white,
                   boxShadow: const [
                     BoxShadow(color: Color(0xffe8e8e8), blurRadius: 3, offset: Offset(0, 5)),
