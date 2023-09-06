@@ -94,8 +94,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 children: [
                   // Image section
                   Container(
-                    height: 120,
-                    width: 120,
+                    height: Dimensions.listViewImgSize,
+                    width: Dimensions.listViewImgSize,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimensions.radius20),
                       color: Colors.white38,
@@ -106,6 +106,52 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ),
                   ),
                   // text content
+                  Expanded(
+                    child: Container(
+                      height: Dimensions.listTextContainerSize,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(Dimensions.radius20),
+                          topRight: Radius.circular(Dimensions.radius20),
+                        ),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BigText(text: 'Nutritious furit meal in China'),
+                            SizedBox(height: Dimensions.height10),
+                            SmallText(text: 'With Chinese charateristics'),
+                            SizedBox(height: Dimensions.height10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconText(
+                                  icon: Icons.circle_sharp,
+                                  text: 'Normal',
+                                  iconColor: AppColors.iconColor1,
+                                ),
+                                IconText(
+                                  icon: Icons.location_on,
+                                  text: '1.7km',
+                                  iconColor: AppColors.mainColor,
+                                ),
+                                IconText(
+                                  icon: Icons.access_time_rounded,
+                                  text: '32min',
+                                  iconColor: AppColors.iconColor2,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             );
@@ -214,7 +260,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                           iconColor: AppColors.iconColor2,
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
