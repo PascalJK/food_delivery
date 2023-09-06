@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/components/app_column.dart';
 import 'package:food_delivery/components/icon_text.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
@@ -223,52 +224,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     // BoxShadow(color: Colors.white, blurRadius: 5, offset: Offset(5, 0)),
                   ]),
               child: Container(
-                padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const BigText(text: 'Bitter Orange Margarine'),
-                    SizedBox(height: Dimensions.height10),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(
-                            5,
-                            (index) => Icon(Icons.star, color: AppColors.mainColor, size: 15),
-                          ),
-                        ),
-                        SizedBox(width: Dimensions.height10),
-                        const SmallText(text: '4.5'),
-                        const VerticalDivider(width: 10, thickness: 5, color: Colors.black),
-                        const Icon(Icons.comment_outlined, size: 15),
-                        const SizedBox(width: 1),
-                        const SmallText(text: '123'),
-                      ],
-                    ),
-                    SizedBox(height: Dimensions.height20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconText(
-                          icon: Icons.circle_sharp,
-                          text: 'Normal',
-                          iconColor: AppColors.iconColor1,
-                        ),
-                        IconText(
-                          icon: Icons.location_on,
-                          text: '1.7km',
-                          iconColor: AppColors.mainColor,
-                        ),
-                        IconText(
-                          icon: Icons.access_time_rounded,
-                          text: '32min',
-                          iconColor: AppColors.iconColor2,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                  child: const AppColumn()),
             ),
           ),
         ],
