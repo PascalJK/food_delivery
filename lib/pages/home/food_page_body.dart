@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/icon_text.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
+import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
+import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({super.key});
@@ -90,69 +92,72 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 right: Dimensions.width30,
                 bottom: Dimensions.height10,
               ),
-              child: Row(
-                children: [
-                  // Image section
-                  Container(
-                    height: Dimensions.listViewImgSize,
-                    width: Dimensions.listViewImgSize,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: Colors.white38,
-                      image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/image/food0.png'),
-                      ),
-                    ),
-                  ),
-                  // text content
-                  Expanded(
-                    child: Container(
-                      height: Dimensions.listTextContainerSize,
+              child: InkWell(
+                onTap: () => Get.to(() => const PopularFoodDetail()),
+                child: Row(
+                  children: [
+                    // Image section
+                    Container(
+                      height: Dimensions.listViewImgSize,
+                      width: Dimensions.listViewImgSize,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(Dimensions.radius20),
-                          topRight: Radius.circular(Dimensions.radius20),
-                        ),
-                        color: Colors.white,
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const BigText(text: 'Nutritious furit meal in China'),
-                            SizedBox(height: Dimensions.height10),
-                            const SmallText(text: 'With Chinese charateristics'),
-                            SizedBox(height: Dimensions.height10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconText(
-                                  icon: Icons.circle_sharp,
-                                  text: 'Normal',
-                                  iconColor: AppColors.iconColor1,
-                                ),
-                                IconText(
-                                  icon: Icons.location_on,
-                                  text: '1.7km',
-                                  iconColor: AppColors.mainColor,
-                                ),
-                                IconText(
-                                  icon: Icons.access_time_rounded,
-                                  text: '32min',
-                                  iconColor: AppColors.iconColor2,
-                                ),
-                              ],
-                            ),
-                          ],
+                        borderRadius: BorderRadius.circular(Dimensions.radius20),
+                        color: Colors.white38,
+                        image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/image/food0.png'),
                         ),
                       ),
                     ),
-                  )
-                ],
+                    // text content
+                    Expanded(
+                      child: Container(
+                        height: Dimensions.listTextContainerSize,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(Dimensions.radius20),
+                            topRight: Radius.circular(Dimensions.radius20),
+                          ),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding:
+                              EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const BigText(text: 'Nutritious furit meal in China'),
+                              SizedBox(height: Dimensions.height10),
+                              const SmallText(text: 'With Chinese charateristics'),
+                              SizedBox(height: Dimensions.height10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  IconText(
+                                    icon: Icons.circle_sharp,
+                                    text: 'Normal',
+                                    iconColor: AppColors.iconColor1,
+                                  ),
+                                  IconText(
+                                    icon: Icons.location_on,
+                                    text: '1.7km',
+                                    iconColor: AppColors.mainColor,
+                                  ),
+                                  IconText(
+                                    icon: Icons.access_time_rounded,
+                                    text: '32min',
+                                    iconColor: AppColors.iconColor2,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             );
           },
