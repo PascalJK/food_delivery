@@ -62,6 +62,29 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               borderRadius: BorderRadius.circular(5),
             ),
           ),
+        ),
+        // Popular text
+        SizedBox(height: Dimensions.height30),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const BigText(text: 'Popular'),
+              Container(
+                  child: const BigText(
+                text: ' :Food Pairing',
+                color: Colors.black26,
+              )),
+            ],
+          ),
+        ),
+        // List of food & images
+        ListView.builder(
+          itemBuilder: (context, index) {
+            return Container();
+          },
+          itemCount: 10,
         )
       ],
     );
