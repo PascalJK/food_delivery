@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/app_column.dart';
 import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
+import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 
 class PopularFoodDetail extends StatelessWidget {
@@ -69,6 +70,55 @@ class PopularFoodDetail extends StatelessWidget {
             ),
           )
         ],
+      ),
+      bottomNavigationBar: Container(
+        height: Dimensions.bottomBarHeight,
+        padding: EdgeInsets.symmetric(
+          vertical: Dimensions.height20,
+          horizontal: Dimensions.height20,
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.buttonBackgroundColor,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(Dimensions.radius20 * 2)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.height20,
+                vertical: Dimensions.height20,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color: Colors.white,
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.remove, color: AppColors.signColor),
+                  SizedBox(width: Dimensions.width10 / 2),
+                  const BigText(text: '0'),
+                  SizedBox(width: Dimensions.width10 / 2),
+                  Icon(Icons.add, color: AppColors.signColor),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.height20,
+                vertical: Dimensions.height20,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color: AppColors.mainColor,
+              ),
+              child: const BigText(
+                text: '\$10 | Add to cart',
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
