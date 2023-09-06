@@ -11,8 +11,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      home: MainFoodPage(),
+    return GetMaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+      home: const MainFoodPage(),
     );
   }
 }
