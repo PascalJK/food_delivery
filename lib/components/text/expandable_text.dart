@@ -38,11 +38,15 @@ class _ExpandableTextState extends State<ExpandableText> {
           child: secondHalf.isEmpty
               ? SmallText(
                   text: firstHalf,
+                  height: 1.8,
                   size: Dimensions.font17,
+                  color: AppColors.paraColor,
                 )
               : Column(
                   children: [
                     SmallText(
+                      height: 1.8,
+                      color: AppColors.paraColor,
                       text: hiddenText
                           ? '$firstHalf...'
                           : firstHalf + secondHalf + firstHalf + secondHalf,
