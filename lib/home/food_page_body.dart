@@ -123,9 +123,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            BigText(text: 'Nutritious furit meal in China'),
+                            const BigText(text: 'Nutritious furit meal in China'),
                             SizedBox(height: Dimensions.height10),
-                            SmallText(text: 'With Chinese charateristics'),
+                            const SmallText(text: 'With Chinese charateristics'),
                             SizedBox(height: Dimensions.height10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
