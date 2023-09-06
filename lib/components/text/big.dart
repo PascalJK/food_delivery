@@ -5,13 +5,13 @@ class BigText extends StatelessWidget {
   const BigText({
     super.key,
     required this.text,
-    this.color = const Color(0xFF332d2b),
-    this.size = 0,
+    this.color,
+    this.size,
     this.overflow = TextOverflow.ellipsis,
   });
   final String text;
   final Color? color;
-  final double size;
+  final double? size;
   final TextOverflow overflow;
 
   @override
@@ -21,9 +21,9 @@ class BigText extends StatelessWidget {
       maxLines: 1,
       overflow: overflow,
       style: TextStyle(
-        color: color,
+        color: color ?? const Color(0xFF332d2b),
         fontFamily: 'Roboto',
-        fontSize: size == 0 ? Dimensions.font20 : size,
+        fontSize: size ?? Dimensions.font20,
         fontWeight: FontWeight.w400,
       ),
     );
