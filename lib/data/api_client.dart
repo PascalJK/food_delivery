@@ -9,6 +9,8 @@ class ApiClient extends GetConnect implements GetxService {
     baseUrl = appBaseUrl;
     timeout = const Duration(seconds: 30);
     token = '';
+    // Set allow auto signed cert to [true] to avoid: HandshakeException
+    allowAutoSignedCert = true;
     _mainHeaders = {
       'Content-type': 'application/json; charset=UTF-8',
       'Authorization': 'Bearer $token',
