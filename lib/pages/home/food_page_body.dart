@@ -5,6 +5,7 @@ import 'package:food_delivery/components/icon_text.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
 import 'package:food_delivery/pages/food/popular_food_detail.dart';
+import 'package:food_delivery/pages/food/recommended_food_detail.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
@@ -196,39 +197,42 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
     return Transform(
       transform: matrix,
-      child: Stack(
-        children: [
-          Container(
-            height: Dimensions.pageViewContainer,
-            margin: const EdgeInsets.symmetric(horizontal: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius30),
-              color: index.isEven ? const Color(0xff69c5df) : const Color(0xff9294cc),
-              image: const DecorationImage(
-                image: AssetImage('assets/image/food0.png'),
-                fit: BoxFit.cover,
+      child: InkWell(
+        onTap: () => Get.to(() => const RecommendedFoodDetail()),
+        child: Stack(
+          children: [
+            Container(
+              height: Dimensions.pageViewContainer,
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
+                color: index.isEven ? const Color(0xff69c5df) : const Color(0xff9294cc),
+                image: const DecorationImage(
+                  image: AssetImage('assets/image/food0.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: Dimensions.pageViewTextContainer,
-              margin: const EdgeInsets.only(right: 20, left: 20, bottom: 30),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius15),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(color: Color(0xffe8e8e8), blurRadius: 3, offset: Offset(0, 5)),
-                    // BoxShadow(color: Colors.white, blurRadius: 5, offset: Offset(-5, 0)),
-                    // BoxShadow(color: Colors.white, blurRadius: 5, offset: Offset(5, 0)),
-                  ]),
+            Align(
+              alignment: Alignment.bottomCenter,
               child: Container(
-                  padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-                  child: const AppColumn()),
+                height: Dimensions.pageViewTextContainer,
+                margin: const EdgeInsets.only(right: 20, left: 20, bottom: 30),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius15),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(color: Color(0xffe8e8e8), blurRadius: 3, offset: Offset(0, 5)),
+                      // BoxShadow(color: Colors.white, blurRadius: 5, offset: Offset(-5, 0)),
+                      // BoxShadow(color: Colors.white, blurRadius: 5, offset: Offset(5, 0)),
+                    ]),
+                child: Container(
+                    padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                    child: const AppColumn()),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
