@@ -64,6 +64,80 @@ class RecommendedFoodDetail extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.width20 * 2.5, vertical: Dimensions.height10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppIcon(
+                  iconColor: Colors.white,
+                  bgColor: AppColors.mainColor,
+                  icon: Icons.remove,
+                  iconSize: Dimensions.iconSize24,
+                ),
+                BigText(
+                  text: '\$12.88 X 0',
+                  color: AppColors.mainBlackColor,
+                  size: Dimensions.font26,
+                ),
+                AppIcon(
+                  iconColor: Colors.white,
+                  bgColor: AppColors.mainColor,
+                  icon: Icons.add,
+                  iconSize: Dimensions.iconSize24,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+              vertical: Dimensions.height10,
+              horizontal: Dimensions.height20,
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.buttonBackgroundColor,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(Dimensions.radius20 * 2)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height20,
+                    vertical: Dimensions.height20,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: Colors.white,
+                  ),
+                  child: Icon(
+                    Icons.favorite,
+                    color: AppColors.mainColor,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height20,
+                    vertical: Dimensions.height20,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
+                    color: AppColors.mainColor,
+                  ),
+                  child: const BigText(
+                    text: '\$28 | Add to cart',
+                    color: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
