@@ -1,31 +1,42 @@
 class Product {
-  int? totalSize;
-  int? typeId;
-  int? offset;
-  List<Products>? products;
+  int? _totalSize;
+  int? _typeId;
+  int? _offset;
+  final List<Products> _products = [];
+  List<Products> get getProducts => _products;
 
-  Product({this.totalSize, this.typeId, this.offset, this.products});
+  Product({
+    required totalSize,
+    required typeId,
+    required offset,
+    required products,
+  }) {
+    _totalSize = totalSize;
+    _typeId = typeId;
+    _offset = offset;
+    products = products;
+  }
 
   Product.fromJson(Map<String, dynamic> json) {
-    totalSize = json['total_size'];
-    typeId = json['type_id'];
-    offset = json['offset'];
+    _totalSize = json['total_size'];
+    _typeId = json['type_id'];
+    _offset = json['offset'];
     if (json['products'] != null) {
-      products = <Products>[];
+      _products.clear();
       json['products'].forEach((v) {
-        products!.add(Products.fromJson(v));
+        _products.add(Products.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total_size'] = totalSize;
-    data['type_id'] = typeId;
-    data['offset'] = offset;
-    if (products != null) {
-      data['products'] = products!.map((v) => v.toJson()).toList();
-    }
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total_size'] = _totalSize;
+    data['type_id'] = _typeId;
+    data['offset'] = _offset;
+    // if (_products != null) {
+    //   data['products'] = _products!.map((v) => v.toJson()).toList();
+    // }
     return data;
   }
 }
@@ -42,17 +53,18 @@ class Products {
   String? updatedAt;
   int? typeId;
 
-  Products(
-      {this.id,
-      this.name,
-      this.description,
-      this.price,
-      this.stars,
-      this.img,
-      this.location,
-      this.createdAt,
-      this.updatedAt,
-      this.typeId});
+  Products({
+    this.id,
+    this.name,
+    this.description,
+    this.price,
+    this.stars,
+    this.img,
+    this.location,
+    this.createdAt,
+    this.updatedAt,
+    this.typeId,
+  });
 
   Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -68,7 +80,7 @@ class Products {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
     data['description'] = description;
