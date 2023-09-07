@@ -32,45 +32,41 @@ class _ExpandableTextState extends State<ExpandableText> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SingleChildScrollView(
-        child: Container(
-          child: secondHalf.isEmpty
-              ? SmallText(
-                  text: firstHalf,
+    return Container(
+      child: secondHalf.isEmpty
+          ? SmallText(
+              text: firstHalf,
+              height: 1.8,
+              size: Dimensions.font17,
+              color: AppColors.paraColor,
+            )
+          : Column(
+              children: [
+                SmallText(
                   height: 1.8,
-                  size: Dimensions.font17,
                   color: AppColors.paraColor,
-                )
-              : Column(
-                  children: [
-                    SmallText(
-                      height: 1.8,
-                      color: AppColors.paraColor,
-                      text: hiddenText
-                          ? '$firstHalf...'
-                          : firstHalf + secondHalf + firstHalf + secondHalf,
-                      size: Dimensions.font17,
-                    ),
-                    InkWell(
-                      onTap: () => setState(() => hiddenText = !hiddenText),
-                      child: Row(
-                        children: [
-                          SmallText(
-                            text: hiddenText ? 'Show more' : 'Show less',
-                            color: AppColors.mainColor,
-                          ),
-                          Icon(
-                            hiddenText ? Icons.arrow_drop_down : Icons.arrow_drop_up,
-                            color: AppColors.mainColor,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                  text: hiddenText
+                      ? '$firstHalf...'
+                      : firstHalf + secondHalf + firstHalf + secondHalf,
+                  size: Dimensions.font17,
                 ),
-        ),
-      ),
+                InkWell(
+                  onTap: () => setState(() => hiddenText = !hiddenText),
+                  child: Row(
+                    children: [
+                      SmallText(
+                        text: hiddenText ? 'Show more' : 'Show less',
+                        color: AppColors.mainColor,
+                      ),
+                      Icon(
+                        hiddenText ? Icons.arrow_drop_down : Icons.arrow_drop_up,
+                        color: AppColors.mainColor,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
     );
   }
 }
