@@ -5,6 +5,19 @@ class RecommendedFoodDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            flexibleSpace: FlexibleSpaceBar(
+              background: Image.asset(
+                'assets/image/food0.png',
+                width: double.maxFinite,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
