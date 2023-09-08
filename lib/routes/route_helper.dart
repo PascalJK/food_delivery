@@ -10,8 +10,7 @@ class RouteHelper {
 
   // ignore: unnecessary_string_interpolations
   static String getInitial() => '$initial';
-  // ignore: unnecessary_string_interpolations
-  static String getPopularFood() => '$popularFood';
+  static String getPopularFood(int index) => '$popularFood?item=$index';
   // ignore: unnecessary_string_interpolations
   static String getRecommendedFood() => '$recommendedFood';
 
@@ -23,7 +22,10 @@ class RouteHelper {
     // Popular Food Detail
     GetPage(
       name: popularFood,
-      page: () => const PopularFoodDetail(),
+      page: () {
+        var i = Get.parameters['item'];
+        return PopularFoodDetail(productModel: int.parse(i!));
+      },
       transition: Transition.fadeIn,
     ),
     // Recommended Food Detail
