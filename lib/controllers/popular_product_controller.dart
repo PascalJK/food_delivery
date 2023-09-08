@@ -12,6 +12,9 @@ class PopularProductController extends GetxController {
   bool _isLoaded = false;
   bool get getIsLoaded => _isLoaded;
 
+  int _quantity = 0;
+  String get getQuantity => '$_quantity';
+
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -28,5 +31,23 @@ class PopularProductController extends GetxController {
     } else {
       //      throw Exception("Error");
     }
+  }
+
+  void setQuantity(bool isIncrement) {
+    if (isIncrement) {
+      _quantity = checkQuantity(_quantity + 1);
+    } else {
+      _quantity = checkQuantity(_quantity - 1);
+    }
+    update();
+  }
+
+  int checkQuantity(int i) {
+    if (i < 0) {
+      return 0;
+    } else if (i > 20) {
+      return 20;
+    }
+    return i;
   }
 }
