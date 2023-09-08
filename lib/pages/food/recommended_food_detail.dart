@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/text/big.dart';
+import 'package:food_delivery/models/product_model.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
-import 'package:food_delivery/utils/text.dart';
 
 import '../../components/app_icon.dart';
 import '../../components/text/expandable_text.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({super.key});
+  final ProductModel model;
+  const RecommendedFoodDetail({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +41,12 @@ class RecommendedFoodDetail extends StatelessWidget {
                     top: Radius.circular(Dimensions.radius20),
                   ),
                 ),
-                child: Center(child: BigText(text: 'Chinese Side', size: Dimensions.font26)),
+                child: Center(child: BigText(text: model.name!, size: Dimensions.font26)),
               ),
             ),
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'assets/image/food0.png',
+              background: Image.network(
+                AppConstants.UPLOAD_URL + model.img!,
                 fit: BoxFit.cover,
                 width: double.maxFinite,
               ),
@@ -55,8 +57,8 @@ class RecommendedFoodDetail extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: Dimensions.width20),
-                  child: const ExpandableText(
-                    text: '$tListingInfoDetailTxt...\n[Repeat]\n$tListingInfoDetailTxt',
+                  child: ExpandableText(
+                    text: model.description!,
                   ),
                 ),
               ],
@@ -80,7 +82,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                   iconSize: Dimensions.iconSize24,
                 ),
                 BigText(
-                  text: '\$12.88 X 0',
+                  text: '\$${model.price} X 0',
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),
