@@ -186,7 +186,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     );
   }
 
-  Widget _buildPopularProductItem(ProductModel productModel, int index) {
+  Widget _buildPopularProductItem(ProductModel model, int index) {
     // #region Matrix Logic
     var matrix = Matrix4.identity();
     // Current Item (inFocus)
@@ -217,7 +217,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Transform(
       transform: matrix,
       child: InkWell(
-        onTap: () => Get.toNamed(RouteHelper.getPopularFood()),
+        onTap: () => Get.toNamed(RouteHelper.getPopularFood(index)),
         child: Stack(
           children: [
             Container(
@@ -227,7 +227,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(Dimensions.radius30),
                 color: index.isEven ? const Color(0xff69c5df) : const Color(0xff9294cc),
                 image: DecorationImage(
-                  image: NetworkImage(AppConstants.UPLOAD_URL + productModel.img!),
+                  image: NetworkImage(AppConstants.UPLOAD_URL + model.img!),
                   fit: BoxFit.cover,
                 ),
               ),
