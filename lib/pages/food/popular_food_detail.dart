@@ -3,16 +3,19 @@ import 'package:food_delivery/components/app_column.dart';
 import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/expandable_text.dart';
+import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
-
-import '../../utils/text.dart';
+import 'package:get/get.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({super.key});
+  final int productModel;
+  const PopularFoodDetail({super.key, required this.productModel});
 
   @override
   Widget build(BuildContext context) {
+    var item = Get.find<PopularProductController>().getPopularProductList[productModel];
     return Scaffold(
       body: Stack(
         children: [
@@ -23,10 +26,10 @@ class PopularFoodDetail extends StatelessWidget {
             child: Container(
               height: Dimensions.popularFoodImgSize,
               width: double.maxFinite,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/image/food0.png'),
+                  image: NetworkImage(AppConstants.UPLOAD_URL + item.img!),
                 ),
               ),
             ),
@@ -69,9 +72,9 @@ class PopularFoodDetail extends StatelessWidget {
                   SizedBox(height: Dimensions.height10),
                   const BigText(text: 'Introduce'),
                   SizedBox(height: Dimensions.height15),
-                  const Expanded(
+                  Expanded(
                     child: SingleChildScrollView(
-                      child: ExpandableText(text: tListingInfoDetailTxt),
+                      child: ExpandableText(text: item.description!),
                     ),
                   ),
                 ],
@@ -121,8 +124,8 @@ class PopularFoodDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: AppColors.mainColor,
               ),
-              child: const BigText(
-                text: '\$10 | Add to cart',
+              child: BigText(
+                text: '\$${item.price!} | Add to cart',
                 color: Colors.white,
               ),
             )
