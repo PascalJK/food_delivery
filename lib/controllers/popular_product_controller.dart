@@ -1,4 +1,4 @@
-import 'package:food_delivery/data/popular_product_repo.dart';
+import 'package:food_delivery/data/repo/popular_product_repo.dart';
 import 'package:food_delivery/models/product_model.dart';
 import 'package:get/get.dart';
 
