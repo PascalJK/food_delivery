@@ -31,7 +31,7 @@ class RouteHelper {
     // Recommended Food Detail
     GetPage(
       name: recommendedFood,
-      page: () => const RecommendedFoodDetail(),
+      page: () => RecommendedFoodDetail(model: Get.arguments),
       transition: Transition.fadeIn,
     ),
   ];
