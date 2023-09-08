@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/models/product_model.dart';
 
 import '../utils/colors.dart';
 import '../utils/dimensions.dart';
@@ -8,14 +9,19 @@ import 'text/small.dart';
 
 class AppColumn extends StatelessWidget {
   final double? size;
-  const AppColumn({super.key, this.size});
+  final ProductModel productModel;
+  const AppColumn({
+    super.key,
+    this.size,
+    required this.productModel,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BigText(text: 'Bitter Orange Margarine', size: size),
+        BigText(text: productModel.name!, size: size),
         SizedBox(height: Dimensions.height10),
         Row(
           children: [

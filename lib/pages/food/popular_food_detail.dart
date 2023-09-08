@@ -68,6 +68,7 @@ class PopularFoodDetail extends StatelessWidget {
                 children: [
                   AppColumn(
                     size: Dimensions.font26,
+                    productModel: item,
                   ),
                   SizedBox(height: Dimensions.height10),
                   const BigText(text: 'Introduce'),
