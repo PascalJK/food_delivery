@@ -9,6 +9,9 @@ class PopularProductController extends GetxController {
   List<dynamic> _popularProductList = [];
   List<dynamic> get getPopularProductList => _popularProductList;
 
+  bool _isLoaded = false;
+  bool get getIsLoaded => _isLoaded;
+
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -20,6 +23,7 @@ class PopularProductController extends GetxController {
     if (response.statusCode == 200) {
       _popularProductList = [];
       _popularProductList.addAll(Product.fromJson(response.body).getProducts);
+      _isLoaded = true;
       update();
     } else {
       //      throw Exception("Error");
