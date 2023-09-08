@@ -9,11 +9,11 @@ class PopularProductController extends GetxController {
   List<dynamic> _popularProductList = [];
   List<dynamic> get getPopularProductList => _popularProductList;
 
-  // @override
-  // Future<void> onInit() async {
-  //   super.onInit();
-  //   await loadPopularProductList();
-  // }
+  @override
+  Future<void> onInit() async {
+    super.onInit();
+    await loadPopularProductList();
+  }
 
   Future loadPopularProductList() async {
     var response = await popularProductRepo.getPopularProductList();
