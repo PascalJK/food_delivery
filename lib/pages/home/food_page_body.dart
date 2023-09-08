@@ -79,7 +79,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ),
           );
         }),
-        // Popular text
+        // recommended text
         SizedBox(height: Dimensions.height30),
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
@@ -95,7 +95,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ],
           ),
         ),
-        // List of food & images
+        // List of recommended food
         GetBuilder<RecommendedProductController>(builder: (c) {
           return ListView.builder(
             shrinkWrap: true,
@@ -118,7 +118,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         bottom: Dimensions.height10,
       ),
       child: InkWell(
-        onTap: () => Get.toNamed(RouteHelper.getRecommendedFood()),
+        onTap: () => Get.toNamed(RouteHelper.getRecommendedFood(), arguments: model),
         child: Row(
           children: [
             // Image section
