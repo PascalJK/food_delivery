@@ -7,6 +7,7 @@ import 'helper/dependencies.dart' as dep;
 
 // Added this code to fix the HandshakeException: Handshake error in client (OS Error: CERTIFICATE_VERIFY_FAILED)
 // Occurs when trying to load Network Image.
+// !!!!!!!!!!!! NOT SAFE FOR PRODUCTION !!!!!!!!!!!!!!!!!
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
