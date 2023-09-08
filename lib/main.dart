@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;
@@ -38,6 +39,7 @@ class MainApp extends StatelessWidget {
             color: AppColors.mainColor,
           )),
       home: const MainFoodPage(),
+      initialRoute: RouteHelper.initial,
     );
   }
 }
