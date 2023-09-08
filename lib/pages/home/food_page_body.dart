@@ -53,13 +53,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             builder: (c) {
           return Container(
             height: Dimensions.pageView,
-            child: PageView.builder(
-              controller: pageController,
-              itemCount: c.getPopularProductList.length,
-              itemBuilder: (context, index) {
-                return _buildPageItem(c.getPopularProductList[index], index);
-              },
-            ),
+            child: c.getIsLoaded
+                ? PageView.builder(
+                    controller: pageController,
+                    itemCount: c.getPopularProductList.length,
+                    itemBuilder: (context, index) {
+                      return _buildPageItem(c.getPopularProductList[index], index);
+                    },
+                  )
+                : const Center(child: CircularProgressIndicator()),
           );
         }),
         // Indicator
