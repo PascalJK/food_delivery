@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:get/get.dart';
@@ -38,8 +37,8 @@ class MainApp extends StatelessWidget {
           progressIndicatorTheme: ProgressIndicatorThemeData(
             color: AppColors.mainColor,
           )),
-      home: const MainFoodPage(),
       initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }
