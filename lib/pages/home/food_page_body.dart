@@ -101,10 +101,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
+            itemCount: c.getRecommendedProductList.length,
             itemBuilder: (context, index) {
               return _buildRecommendedProductItem(c.getRecommendedProductList[index]);
             },
-            itemCount: c.getRecommendedProductList.length,
           );
         })
       ],
@@ -131,7 +131,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 color: Colors.white38,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(AppConstants.ImgBASEURL + model.img!),
+                  image: NetworkImage(AppConstants.UPLOAD_URL + model.img!),
                 ),
               ),
             ),
@@ -228,7 +228,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(Dimensions.radius30),
                 color: index.isEven ? const Color(0xff69c5df) : const Color(0xff9294cc),
                 image: DecorationImage(
-                  image: NetworkImage(AppConstants.ImgBASEURL + productModel.img!),
+                  image: NetworkImage(AppConstants.UPLOAD_URL + productModel.img!),
                   fit: BoxFit.cover,
                 ),
               ),
