@@ -59,7 +59,6 @@ class CartPage extends StatelessWidget {
               bottom: 0,
               child: Container(
                 margin: EdgeInsets.only(top: Dimensions.height15),
-                // color: Colors.amberAccent,
                 child: MediaQuery.removePadding(
                   context: context,
                   removeTop: true,
