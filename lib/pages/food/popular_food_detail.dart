@@ -126,15 +126,15 @@ class PopularFoodDetail extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
+              MaterialButton(
                 padding: EdgeInsets.symmetric(
                   horizontal: Dimensions.height20,
                   vertical: Dimensions.height20,
                 ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: AppColors.mainColor,
-                ),
+                onPressed: () => c.addCartItem(item),
+                color: AppColors.mainColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
                 child: BigText(
                   text: '\$${item.price!} | Add to cart',
                   color: Colors.white,
