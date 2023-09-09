@@ -16,8 +16,11 @@ class PopularProductController extends GetxController {
   bool get getIsLoaded => _isLoaded;
 
   int _cartItems = 0;
-  int get getCartItems => _cartItems + _quantity;
   int _quantity = 0;
+
+  int get getCartItems => _cartItems + _quantity;
+  int get getTotalCartItemsQty => _cartController.getTotalQuantities();
+
   String get getQuantity => '$_quantity';
 
   @override
