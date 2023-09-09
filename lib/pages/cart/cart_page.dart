@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/components/text/big.dart';
+import 'package:food_delivery/components/text/small.dart';
+import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
@@ -10,7 +14,6 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var controller = Get.find<
     return Scaffold(
       body: Stack(
         children: [
@@ -35,7 +38,6 @@ class CartPage extends StatelessWidget {
                   iconColor: Colors.white,
                   bgColor: AppColors.mainColor,
                   iconSize: Dimensions.iconSize24,
-                  // onPressed: () => Get.back(),
                 ),
                 AppIcon(
                   icon: Icons.shopping_cart,
@@ -54,17 +56,83 @@ class CartPage extends StatelessWidget {
               right: Dimensions.width20,
               bottom: 0,
               child: Container(
-                color: Colors.amberAccent,
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 100,
-                      width: double.maxFinite,
-                      color: Colors.blueAccent,
-                      margin: const EdgeInsets.only(bottom: 8),
+                margin: EdgeInsets.only(top: Dimensions.height15),
+                // color: Colors.amberAccent,
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  child: GetBuilder<CartController>(builder: (c) {
+                    return ListView.builder(
+                      itemCount: c.getCartList.length,
+                      itemBuilder: (context, index) {
+                        final item = c.getCartList[index];
+                        return Container(
+                          height: 100,
+                          width: double.maxFinite,
+                          margin: const EdgeInsets.only(bottom: 8),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: Dimensions.height20 * 5,
+                                width: Dimensions.height20 * 5,
+                                margin: EdgeInsets.only(bottom: Dimensions.height10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(Dimensions.radius20),
+                                  color: Colors.white,
+                                  image: DecorationImage(
+                                    image: NetworkImage(AppConstants.UPLOAD_URL + item.img!),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: Dimensions.width10),
+                              Expanded(
+                                  child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  BigText(text: item.name!),
+                                  SmallText(text: 'text'),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      BigText(text: '\$${item.price!}'),
+                                      Container(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: Dimensions.height10,
+                                          vertical: Dimensions.height10,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(Dimensions.radius20),
+                                          color: Colors.white,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            GestureDetector(
+                                              // onTap: () => c.setQuantity(false),
+                                              child: Icon(Icons.remove, color: AppColors.signColor),
+                                            ),
+                                            SizedBox(width: Dimensions.width10 / 2),
+                                            BigText(text: '${item.quantity}'),
+                                            SizedBox(width: Dimensions.width10 / 2),
+                                            GestureDetector(
+                                              // onTap: () => c.setQuantity(true),
+                                              child: Icon(Icons.add, color: AppColors.signColor),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ))
+                            ],
+                          ),
+                        );
+                      },
                     );
-                  },
+                  }),
                 ),
               ))
         ],
