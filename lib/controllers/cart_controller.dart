@@ -30,6 +30,14 @@ class CartController extends GetxController {
     }
   }
 
+  void tryRemoveItem(ProductModel product) {
+    if (_items.containsKey(product.id)) {
+      _items.remove(product.id);
+    } else {
+      // TODO toast error
+    }
+  }
+
   int getQuantity(ProductModel model) {
     int qty = 0;
     _items.forEach((key, value) {
