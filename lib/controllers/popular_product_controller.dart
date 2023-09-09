@@ -10,7 +10,7 @@ class PopularProductController extends GetxController {
   List<ProductModel> _popularProductList = [];
   List<ProductModel> get getPopularProductList => _popularProductList;
 
-  late CartController _cartController;
+  final CartController _cartController = Get.find<CartController>();
 
   bool _isLoaded = false;
   bool get getIsLoaded => _isLoaded;
@@ -56,10 +56,9 @@ class PopularProductController extends GetxController {
     return i;
   }
 
-  void initProduct() {
+  void initProduct(ProductModel p) {
     _cartItems = 0;
-    _quantity = 0;
-    _cartController = Get.find<CartController>();
+    _quantity = _cartController.getQuantity(p);
   }
 
   void addCartItem(ProductModel productModel) {
