@@ -16,8 +16,8 @@ class PopularFoodDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<PopularProductController>();
-    controller.initProduct();
     var item = controller.getPopularProductList[productModel];
+    controller.initProduct(item);
 
     return Scaffold(
       body: Stack(
