@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/text/big.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/models/product_model.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
+import 'package:get/get.dart';
 
 import '../../components/app_icon.dart';
 import '../../components/text/expandable_text.dart';
@@ -23,11 +25,17 @@ class RecommendedFoodDetail extends StatelessWidget {
             pinned: true,
             automaticallyImplyLeading: false,
             backgroundColor: AppColors.yellowColor,
-            title: const Row(
+            title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.arrow_back),
-                AppIcon(icon: Icons.shopping_cart_outlined),
+                AppIcon(icon: Icons.arrow_back, onPressed: () => Get.back()),
+                GetBuilder<RecommendedProductController>(builder: (c) {
+                  return AppIcon(
+                    icon: Icons.shopping_cart_outlined,
+                    useBadge: true,
+                    text: '${c.getTotalCartItemsQty}',
+                  );
+                }),
               ],
             ),
             bottom: PreferredSize(
@@ -66,80 +74,84 @@ class RecommendedFoodDetail extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: Dimensions.width20 * 2.5, vertical: Dimensions.height10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AppIcon(
-                  iconColor: Colors.white,
-                  bgColor: AppColors.mainColor,
-                  icon: Icons.remove,
-                  iconSize: Dimensions.iconSize24,
-                ),
-                BigText(
-                  text: '\$${model.price} X 0',
-                  color: AppColors.mainBlackColor,
-                  size: Dimensions.font26,
-                ),
-                AppIcon(
-                  iconColor: Colors.white,
-                  bgColor: AppColors.mainColor,
-                  icon: Icons.add,
-                  iconSize: Dimensions.iconSize24,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(
-              vertical: Dimensions.height10,
-              horizontal: Dimensions.height20,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.buttonBackgroundColor,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(Dimensions.radius20 * 2)),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.height20,
-                    vertical: Dimensions.height20,
+      bottomNavigationBar: GetBuilder<RecommendedProductController>(builder: (c) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.width20 * 2.5, vertical: Dimensions.height10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppIcon(
+                    iconColor: Colors.white,
+                    bgColor: AppColors.mainColor,
+                    icon: Icons.remove,
+                    iconSize: Dimensions.iconSize24,
+                    onPressed: () => c.setQuantity(false),
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimensions.radius20),
-                    color: Colors.white,
+                  BigText(
+                    text: '\$${model.price} X ${c.getQuantity}',
+                    color: AppColors.mainBlackColor,
+                    size: Dimensions.font26,
                   ),
-                  child: Icon(
-                    Icons.favorite,
+                  AppIcon(
+                    iconColor: Colors.white,
+                    bgColor: AppColors.mainColor,
+                    icon: Icons.add,
+                    iconSize: Dimensions.iconSize24,
+                    onPressed: () => c.setQuantity(true),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: Dimensions.height10,
+                horizontal: Dimensions.height20,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.buttonBackgroundColor,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(Dimensions.radius20 * 2)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.height20,
+                      vertical: Dimensions.height20,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: Colors.white,
+                    ),
+                    child: Icon(
+                      Icons.favorite,
+                      color: AppColors.mainColor,
+                    ),
+                  ),
+                  MaterialButton(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.height20,
+                      vertical: Dimensions.height20,
+                    ),
+                    onPressed: () => c.addCartItem(model),
                     color: AppColors.mainColor,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.height20,
-                    vertical: Dimensions.height20,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimensions.radius20),
-                    color: AppColors.mainColor,
-                  ),
-                  child: const BigText(
-                    text: '\$28 | Add to cart',
-                    color: Colors.white,
-                  ),
-                )
-              ],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
+                    child: BigText(
+                      text: '\$${model.price!} | Add to cart',
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 }
