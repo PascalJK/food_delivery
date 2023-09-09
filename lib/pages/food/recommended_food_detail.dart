@@ -16,6 +16,8 @@ class RecommendedFoodDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<RecommendedProductController>().initProduct(model);
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
