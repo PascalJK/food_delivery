@@ -62,7 +62,7 @@ class PopularProductController extends GetxController {
     _cartController = Get.find<CartController>();
   }
 
-  void addItem(ProductModel productModel) {
+  void addCartItem(ProductModel productModel) {
     if (_quantity < 1) {
       // print error message
       return;
