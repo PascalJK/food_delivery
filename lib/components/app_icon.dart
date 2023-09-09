@@ -40,16 +40,19 @@ class AppIcon extends StatelessWidget {
           onPressed: onPressed ?? () {},
           child: Center(child: _buildIcon()),
         ),
+        // Badge Widget
         if (useBadge) ...[
-          Container(
-            padding: const EdgeInsets.all(2),
-            margin: const EdgeInsets.only(right: 8, top: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(size ?? Dimensions.height40 / 2),
-                color: AppColors.mainColor),
-            child: BigText(
-              text: text,
-              size: 12,
+          IgnorePointer(
+            child: Container(
+              padding: const EdgeInsets.all(2),
+              margin: const EdgeInsets.only(right: 8, top: 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(size ?? Dimensions.height40 / 2),
+                  color: AppColors.mainColor),
+              child: BigText(
+                text: text,
+                size: 12,
+              ),
             ),
           )
         ],
