@@ -21,43 +21,39 @@ class AppIcon extends StatelessWidget {
     this.size,
     this.iconSize,
     this.useBadge = false,
-    this.text = '', this.onPressed,
+    this.text = '',
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        height: size ?? Dimensions.height40,
-        width: size ?? Dimensions.height40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(size ?? Dimensions.height40 / 2),
+    return Stack(
+      alignment: Alignment.topRight,
+      children: [
+        MaterialButton(
+          padding: EdgeInsets.zero,
+          height: size ?? Dimensions.height40,
+          minWidth: size ?? Dimensions.height40,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(size ?? Dimensions.height40 / 2))),
           color: bgColor ?? const Color(0xfffcf4e4),
+          onPressed: onPressed ?? () {},
+          child: Center(child: _buildIcon()),
         ),
-        child: Stack(
-          children: [
-            Center(child: _buildIcon()),
-            if (useBadge) ...[
-              Positioned(
-                right: 0,
-                top: 0,
-                child: Container(
-                  padding: const EdgeInsets.all(3),
-                  margin: EdgeInsets.only(right: 3, top: 3),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(size ?? Dimensions.height40 / 2),
-                      color: AppColors.mainColor),
-                  child: BigText(
-                    text: text,
-                    size: 12,
-                  ),
-                ),
-              )
-            ],
-          ],
-        ),
-      ),
+        if (useBadge) ...[
+          Container(
+            padding: const EdgeInsets.all(2),
+            margin: const EdgeInsets.only(right: 8, top: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(size ?? Dimensions.height40 / 2),
+                color: AppColors.mainColor),
+            child: BigText(
+              text: text,
+              size: 12,
+            ),
+          )
+        ],
+      ],
     );
   }
 
