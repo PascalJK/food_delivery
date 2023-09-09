@@ -10,17 +10,23 @@ class CartController extends GetxController {
   CartController({required this.cartRepo});
 
   final Map<int, CartModel> _items = {};
+  Map<int, CartModel> get getItems => _items;
 
   void addItem(ProductModel product, int quantity) {
-    var item = CartModel(
+    var p = CartModel(
       id: product.id,
       name: product.name,
       img: product.img,
       price: product.price,
       quantity: quantity,
       isExist: true,
-      time: DateTime.now().toString()
+      time: DateTime.now().toString(),
     );
-    _items.putIfAbsent(product.id!, () => item);
+
+    if (!_items.containsKey(product.id)) {
+      _items.putIfAbsent(product.id!, () => p);
+    } else {
+      _items.update(product.id!, (value) => value.copyWith(quantity: value.quantity! + quantity));
+    }
   }
 }
