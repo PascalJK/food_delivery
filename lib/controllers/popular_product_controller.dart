@@ -1,7 +1,5 @@
-import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/data/repo/popular_product_repo.dart';
 import 'package:food_delivery/models/product_model.dart';
-import 'package:get/get.dart';
 
 import 'base_controller.dart';
 
