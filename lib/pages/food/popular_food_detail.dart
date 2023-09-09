@@ -4,6 +4,7 @@ import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/expandable_text.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -51,6 +52,7 @@ class PopularFoodDetail extends StatelessWidget {
                     icon: Icons.shopping_cart_outlined,
                     useBadge: true,
                     text: '${c.getTotalCartItemsQty}',
+                    onPressed: () => Get.toNamed(RouteHelper.cart),
                   );
                 }),
               ],
