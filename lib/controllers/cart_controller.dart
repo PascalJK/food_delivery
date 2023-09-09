@@ -11,6 +11,7 @@ class CartController extends GetxController {
 
   final Map<int, CartModel> _items = {};
   Map<int, CartModel> get getItems => _items;
+  List<CartModel> get getCartList => _items.entries.map((e) => e.value).toList();
 
   void addItem(ProductModel product, int quantity) {
     var p = CartModel(
