@@ -26,7 +26,15 @@ class CartController extends GetxController {
     if (!_items.containsKey(product.id)) {
       _items.putIfAbsent(product.id!, () => p);
     } else {
-      _items.update(product.id!, (value) => value.copyWith(quantity: value.quantity! + quantity));
+      _items.update(product.id!, (value) => value.copyWith(quantity: quantity));
     }
+  }
+
+  int getQuantity(ProductModel model) {
+    int qty = 0;
+    _items.forEach((key, value) {
+      if (key == model.id) qty = value.quantity!;
+    });
+    return qty;
   }
 }
