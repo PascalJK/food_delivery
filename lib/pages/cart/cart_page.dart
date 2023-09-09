@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -38,6 +39,7 @@ class CartPage extends StatelessWidget {
                   iconColor: Colors.white,
                   bgColor: AppColors.mainColor,
                   iconSize: Dimensions.iconSize24,
+                  onPressed: () => Get.until((route) => Get.currentRoute == RouteHelper.initial),
                 ),
                 AppIcon(
                   icon: Icons.shopping_cart,
