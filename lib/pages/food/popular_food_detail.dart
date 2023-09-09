@@ -40,13 +40,19 @@ class PopularFoodDetail extends StatelessWidget {
           // Buttons
           Positioned(
             top: Dimensions.height45,
-            left: Dimensions.width20,
-            right: Dimensions.width20,
-            child: const Row(
+            left: Dimensions.width15,
+            right: Dimensions.width15,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.arrow_back),
-                AppIcon(icon: Icons.shopping_cart_outlined),
+                AppIcon(icon: Icons.arrow_back, onPressed: () => Get.back()),
+                GetBuilder<PopularProductController>(builder: (c) {
+                  return AppIcon(
+                    icon: Icons.shopping_cart_outlined,
+                    useBadge: true,
+                    text: '${c.getTotalCartItemsQty}',
+                  );
+                }),
               ],
             ),
           ),
