@@ -1,3 +1,4 @@
+import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/data/repo/popular_product_repo.dart';
 import 'package:food_delivery/models/product_model.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,8 @@ class PopularProductController extends GetxController {
   PopularProductController({required this.popularProductRepo});
   List<ProductModel> _popularProductList = [];
   List<ProductModel> get getPopularProductList => _popularProductList;
+
+  late CartController _cartController;
 
   bool _isLoaded = false;
   bool get getIsLoaded => _isLoaded;
@@ -56,5 +59,14 @@ class PopularProductController extends GetxController {
   void initProduct() {
     _cartItems = 0;
     _quantity = 0;
+    _cartController = Get.find<CartController>();
+  }
+
+  void addItem(ProductModel productModel) {
+    if (_quantity < 1) {
+      // print error message
+      return;
+    }
+    _cartController.addItem(productModel, _quantity);
   }
 }
