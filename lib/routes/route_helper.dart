@@ -1,3 +1,4 @@
+import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/pages/food/recommended_food_detail.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
@@ -7,6 +8,7 @@ class RouteHelper {
   static const initial = '/';
   static const popularFood = '/popular-food';
   static const recommendedFood = '/recommended-food';
+  static const cart = '/cart';
 
   // ignore: unnecessary_string_interpolations
   static String getInitial() => '$initial';
@@ -32,6 +34,12 @@ class RouteHelper {
     GetPage(
       name: recommendedFood,
       page: () => RecommendedFoodDetail(model: Get.arguments),
+      transition: Transition.fadeIn,
+    ),
+    // Cart Page
+    GetPage(
+      name: cart,
+      page: () => const CartPage(),
       transition: Transition.fadeIn,
     ),
   ];
