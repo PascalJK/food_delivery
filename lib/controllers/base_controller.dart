@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+// import '../models/cart_model.dart';
 import '../models/product_model.dart';
 import 'cart_controller.dart';
 
@@ -13,7 +14,9 @@ class BaseController extends GetxController {
   int get getTotalCartItemsQty => _cartController.getTotalQuantities();
 
   String get getQuantity => '$_quantity';
-  
+
+  // List<CartModel> get getCartItemsList => _cartController.getCartList;
+
   void initProduct(ProductModel p) {
     _cartItems = 0;
     _quantity = _cartController.getQuantity(p);
