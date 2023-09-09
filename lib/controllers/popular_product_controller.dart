@@ -66,9 +66,10 @@ class PopularProductController extends GetxController {
 
   void addCartItem(ProductModel productModel) {
     if (_quantity < 1) {
-      // print error message
-      return;
+      _cartController.tryRemoveItem(productModel);
+    } else {
+      _cartController.addItem(productModel, _quantity);
     }
-    _cartController.addItem(productModel, _quantity);
+    update();
   }
 }
