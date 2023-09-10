@@ -32,6 +32,12 @@ class CartController extends GetxController {
     }
   }
 
+  void updateCartItemQty(CartModel i, int qty) {
+    if (i.quantity! + qty <= 0) return;
+    addItem(i.product!, i.quantity! + qty);
+    update();
+  }
+
   void tryRemoveItem(ProductModel product) {
     if (_items.containsKey(product.id)) {
       _items.remove(product.id);
