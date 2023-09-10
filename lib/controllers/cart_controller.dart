@@ -22,6 +22,7 @@ class CartController extends GetxController {
       quantity: quantity,
       isExist: true,
       time: DateTime.now().toString(),
+      product: product,
     );
 
     if (!_items.containsKey(product.id)) {
