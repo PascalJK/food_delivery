@@ -111,14 +111,14 @@ class CartPage extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           GestureDetector(
-                                            // onTap: () => c.setQuantity(false),
+                                            onTap: () => c.updateCartItemQty(item, -1),
                                             child: Icon(Icons.remove, color: AppColors.signColor),
                                           ),
                                           SizedBox(width: Dimensions.width10 / 2),
                                           BigText(text: '${item.quantity}'),
                                           SizedBox(width: Dimensions.width10 / 2),
                                           GestureDetector(
-                                            // onTap: () => c.setQuantity(true),
+                                            onTap: () => c.updateCartItemQty(item, 1),
                                             child: Icon(Icons.add, color: AppColors.signColor),
                                           ),
                                         ],
