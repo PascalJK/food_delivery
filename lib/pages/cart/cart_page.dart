@@ -140,7 +140,9 @@ class CartPage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: GetBuilder<CartController>(
-        builder: (c) => Container(),
+        builder: (c) => Container(
+          child: BigText(text: '${c.getTotalPrice}'),
+        ),
       ),
     );
   }
