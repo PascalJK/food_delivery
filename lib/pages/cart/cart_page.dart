@@ -139,6 +139,9 @@ class CartPage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: GetBuilder<CartController>(
+        builder: (c) => Container(),
+      ),
     );
   }
 }
