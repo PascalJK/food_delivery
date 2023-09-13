@@ -39,8 +39,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   void dispose() {
-    super.dispose();
     pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -49,7 +49,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         // PageView
         GetBuilder<PopularProductController>(
-            // init: ,
+            autoRemove: false,
             builder: (c) {
           return Container(
             height: Dimensions.pageView,
@@ -65,7 +65,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           );
         }),
         // Indicator
-        GetBuilder<PopularProductController>(builder: (c) {
+        GetBuilder<PopularProductController>(autoRemove: false, builder: (c) {
           return DotsIndicator(
             dotsCount: c.getPopularProductList.isEmpty ? 1 : c.getPopularProductList.length,
             position: _currentPageValue.toInt(),
@@ -96,7 +96,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         // List of recommended food
-        GetBuilder<RecommendedProductController>(builder: (c) {
+        GetBuilder<RecommendedProductController>(
+            autoRemove: false,
+            builder: (c) {
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
