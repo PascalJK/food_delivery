@@ -141,7 +141,44 @@ class CartPage extends StatelessWidget {
       ),
       bottomNavigationBar: GetBuilder<CartController>(
         builder: (c) => Container(
-          child: BigText(text: '${c.getTotalPrice}'),
+          padding: EdgeInsets.symmetric(
+            vertical: Dimensions.height10,
+            horizontal: Dimensions.height20,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.buttonBackgroundColor,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(Dimensions.radius20 * 2)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.height20,
+                  vertical: Dimensions.height20,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius20),
+                  color: Colors.white,
+                ),
+                child: BigText(text: '\$${c.getTotalPrice}'),
+              ),
+              MaterialButton(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.height20,
+                  vertical: Dimensions.height20,
+                ),
+                onPressed: () {},
+                color: AppColors.mainColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
+                child: const BigText(
+                  text: '| Add to cart',
+                  color: Colors.white,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
