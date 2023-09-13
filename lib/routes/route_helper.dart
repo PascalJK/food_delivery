@@ -1,7 +1,7 @@
 import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/pages/food/recommended_food_detail.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/pages/home/home_page.dart';
 import 'package:get/route_manager.dart';
 
 class RouteHelper {
@@ -19,7 +19,7 @@ class RouteHelper {
   static List<GetPage> routes = [
     GetPage(
       name: initial,
-      page: () => const MainFoodPage(),
+      page: () => const HomePage(),
     ),
     // Popular Food Detail
     GetPage(
