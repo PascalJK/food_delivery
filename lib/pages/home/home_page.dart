@@ -56,29 +56,26 @@ class _HomePageState extends State<HomePage> {
       screens: _pages,
       items: _barItems,
       confineInSafeArea: true,
-      backgroundColor: Colors.white, // Default is Colors.white.
-      handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset: true,
-      stateManagement: true, // Default is true.
       hideNavigationBarWhenKeyboardShows: true,
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(10.0),
+      decoration: const NavBarDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
         colorBehindNavBar: Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: ItemAnimationProperties(
+      itemAnimationProperties: const ItemAnimationProperties(
         // Navigation Bar's items animation properties.
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      screenTransitionAnimation: ScreenTransitionAnimation(
+      screenTransitionAnimation: const ScreenTransitionAnimation(
         // Screen transition animation on change of selected tab.
         animateTabTransition: true,
         curve: Curves.ease,
         duration: Duration(milliseconds: 450),
       ),
-      navBarStyle: NavBarStyle.style6, // Choose the nav bar style with this property.
+      navBarStyle: NavBarStyle.style6,
     );
   }
 }
