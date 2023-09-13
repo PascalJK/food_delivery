@@ -37,6 +37,8 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.mainColor,
         unselectedItemColor: Colors.amberAccent,
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: _barItems,
