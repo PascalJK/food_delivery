@@ -6,14 +6,9 @@ import 'package:food_delivery/utils/dimensions.dart';
 import '../../components/text/big.dart';
 import '../../components/text/small.dart';
 
-class MainFoodPage extends StatefulWidget {
+class MainFoodPage extends StatelessWidget {
   const MainFoodPage({super.key});
 
-  @override
-  State<MainFoodPage> createState() => _MainFoodPageState();
-}
-
-class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
