@@ -37,7 +37,7 @@ class MainApp extends StatelessWidget {
           progressIndicatorTheme: ProgressIndicatorThemeData(
             color: AppColors.mainColor,
           )),
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.splash,
       getPages: RouteHelper.routes,
     );
   }
