@@ -1,3 +1,4 @@
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/cart_model.dart';
@@ -13,6 +14,6 @@ class CartRepo {
     for (var element in list) {
       cart.add(element.toJson());
     }
-    prefs.setStringList('Cart-list', cart);
+    prefs.setStringList(AppConstants.CART_LIST, cart);
   }
 }
