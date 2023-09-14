@@ -1,4 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'product_model.dart';
 
 class CartModel {
@@ -53,4 +54,19 @@ class CartModel {
       product: product ?? this.product,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'price': price,
+      'img': img,
+      'quantity': quantity,
+      'isExist': isExist,
+      'time': time,
+      'product': product?.toJson(),
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }
