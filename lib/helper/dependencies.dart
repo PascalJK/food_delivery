@@ -13,13 +13,14 @@ import '../data/repo/cart_repo.dart';
 Future init() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   Get.lazyPut(() => sharedPreferences);
+
   //api client
   Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.BASE_URL));
 
   // repos
   Get.lazyPut(() => PopularProductRepo(apiClient: Get.find<ApiClient>()));
   Get.lazyPut(() => RecommendedProductRepo(apiClient: Get.find<ApiClient>()));
-  Get.lazyPut(() => CartRepo(apiClient: Get.find<ApiClient>()));
+  Get.lazyPut(() => CartRepo(prefs: Get.find<SharedPreferences>()));
 
   // controllers
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find<PopularProductRepo>()));

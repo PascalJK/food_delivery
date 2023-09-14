@@ -1,7 +1,7 @@
-import '../api/api_client.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CartRepo {
-  final ApiClient apiClient;
+  final SharedPreferences prefs;
 
-  CartRepo({required this.apiClient});
+  CartRepo({required this.prefs});
 }
