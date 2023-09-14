@@ -13,11 +13,11 @@ class PopularProductController extends BaseController {
   bool _isLoaded = false;
   bool get getIsLoaded => _isLoaded;
 
-  @override
-  Future<void> onInit() async {
-    super.onInit();
-    await loadPopularProductList();
-  }
+  // @override
+  // Future<void> onInit() async {
+  //   super.onInit();
+  //   await loadPopularProductList();
+  // }
 
   Future loadPopularProductList() async {
     var response = await popularProductRepo.getPopularProductList();

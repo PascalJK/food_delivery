@@ -13,11 +13,11 @@ class RecommendedProductController extends BaseController {
   bool _isLoaded = false;
   bool get getIsLoaded => _isLoaded;
 
-  @override
-  Future<void> onInit() async {
-    super.onInit();
-    await loadRecommendedProductList();
-  }
+  // @override
+  // Future<void> onInit() async {
+  //   super.onInit();
+  //   await loadRecommendedProductList();
+  // }
 
   Future loadRecommendedProductList() async {
     var response = await recommendedProductRepo.getRecommendedProductList();
