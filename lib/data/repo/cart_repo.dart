@@ -6,8 +6,13 @@ class CartRepo {
   final SharedPreferences prefs;
 
   CartRepo({required this.prefs});
+  List<String> cart = [];
 
-  void addToCartList(List<CartModel> list){
-    
+  void addToCartList(List<CartModel> list) {
+    cart = [];
+    for (var element in list) {
+      cart.add(element.toJson());
+    }
+    prefs.setStringList('Cart-list', cart);
   }
 }
