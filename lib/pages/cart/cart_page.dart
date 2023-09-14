@@ -173,7 +173,7 @@ class CartPage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
                 child: const BigText(
-                  text: '| Add to cart',
+                  text: 'Checkout',
                   color: Colors.white,
                 ),
               )
