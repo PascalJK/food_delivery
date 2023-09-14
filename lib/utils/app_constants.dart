@@ -6,6 +6,9 @@ class AppConstants {
 
   static const String TOKEN = 'DBtonken';
 
+  // SharedPrefs Key
+  static const String CART_LIST = 'cart-list';
+
   static const String BASE_URL = 'https://mvs.bslmeiyu.com';
   static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
   static const String RECOMMENDED_PRODUCT_URI = '/api/v1/products/recommended';
