@@ -30,6 +30,7 @@ class CartController extends GetxController {
     } else {
       _items.update(product.id!, (value) => value.copyWith(quantity: quantity));
     }
+    cartRepo.addToCartList(getCartList);
   }
 
   void updateCartItemQty(CartModel i, int qty) {
