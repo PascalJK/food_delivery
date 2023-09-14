@@ -10,8 +10,12 @@ class CartController extends GetxController {
   CartController({required this.cartRepo});
 
   final Map<int, CartModel> _items = {};
+  // TODO Needed?
   Map<int, CartModel> get getItems => _items;
   List<CartModel> get getCartList => _items.entries.map((e) => e.value).toList();
+
+  /// only for local storage cart data
+  List<CartModel> storageCartList = [];
 
   void addItem(ProductModel product, int quantity) {
     var p = CartModel(
@@ -65,5 +69,16 @@ class CartController extends GetxController {
     int total = 0;
     _items.forEach((key, value) => total += value.price! * value.quantity!);
     return total;
+  }
+
+  List<CartModel> getCartData() {
+    return setCartData = cartRepo.getCartList();
+  }
+
+  set setCartData(List<CartModel> items) {
+    storageCartList = items;
+    for (var i in storageCartList) {
+      _items.putIfAbsent(i.product!.id!, () => i);
+    }
   }
 }
