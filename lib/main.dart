@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
@@ -32,24 +33,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Dont leave this code here!
+    Get.find<CartController>().getCartData();
     // TODO find better solution to Builders
-    return GetBuilder<PopularProductController>(
-      builder: (c) {
-        return GetBuilder<RecommendedProductController>(
-          builder: (c) {
-            return GetMaterialApp(
-              theme: ThemeData(
-                  scaffoldBackgroundColor: Colors.white,
-                  primaryColor: AppColors.mainColor,
-                  progressIndicatorTheme: ProgressIndicatorThemeData(
-                    color: AppColors.mainColor,
-                  )),
-              initialRoute: RouteHelper.splash,
-              getPages: RouteHelper.routes,
-            );
-          }
+    return GetBuilder<PopularProductController>(builder: (c) {
+      return GetBuilder<RecommendedProductController>(builder: (c) {
+        return GetMaterialApp(
+          theme: ThemeData(
+              scaffoldBackgroundColor: Colors.white,
+              primaryColor: AppColors.mainColor,
+              progressIndicatorTheme: ProgressIndicatorThemeData(
+                color: AppColors.mainColor,
+              )),
+          initialRoute: RouteHelper.splash,
+          getPages: RouteHelper.routes,
         );
-      }
-    );
+      });
+    });
   }
 }
