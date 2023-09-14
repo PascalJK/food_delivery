@@ -69,4 +69,6 @@ class CartModel {
   }
 
   String toJson() => json.encode(toMap());
+
+  factory CartModel.fromJson(String source) => CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
