@@ -71,9 +71,7 @@ class CartController extends GetxController {
     return total;
   }
 
-  List<CartModel> getCartData() {
-    return setCartData = cartRepo.getCartList();
-  }
+  List<CartModel> getCartData() => setCartData = cartRepo.getCartList();
 
   set setCartData(List<CartModel> items) {
     storageCartList = items;
