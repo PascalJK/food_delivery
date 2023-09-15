@@ -51,6 +51,10 @@ class CartController extends GetxController {
     }
   }
 
+  void addToHistory() {
+    cartRepo.addToCartHistoryList();
+  }
+
   int getQuantity(ProductModel model) {
     int qty = 0;
     _items.forEach((key, value) {
