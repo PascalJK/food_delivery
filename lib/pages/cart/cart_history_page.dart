@@ -70,7 +70,7 @@ class CartHistoryPage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            /// Used to run a method inside a widget
+                            // #region Used to run a method inside a widget
                             /// Study this more
                             (() {
                               var d = DateFormat('yyyy-MM-dd HH:mm:ss')
@@ -78,6 +78,9 @@ class CartHistoryPage extends StatelessWidget {
                               var f = DateFormat('MM/dd/yyyy HH:mm').format(d);
                               return BigText(text: f);
                             }()),
+
+                            ///
+                            // #endregion
                             SizedBox(height: Dimensions.height10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
