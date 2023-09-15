@@ -8,6 +8,7 @@ class CartRepo {
 
   CartRepo({required this.prefs});
   List<String> cart = [];
+  List<String> cartHistory = [];
 
   void addToCartList(List<CartModel> list) {
     cart = [];
@@ -15,6 +16,13 @@ class CartRepo {
       cart.add(element.toJson());
     }
     prefs.setStringList(AppConstants.CART_LIST, cart);
+  }
+
+  void addToCartHistoryList() {
+    for (var c in cart) {
+      cartHistory.add(c);
+    }
+    prefs.setStringList(AppConstants.CART_HISTORY_LIST, cartHistory);
   }
 
   List<CartModel> getCartList() {
