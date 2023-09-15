@@ -19,10 +19,13 @@ class CartRepo {
   }
 
   void addToCartHistoryList() {
+    cartHistory = prefs.getStringList(AppConstants.CART_HISTORY_LIST) ?? [];
     for (var c in cart) {
       cartHistory.add(c);
     }
+    removeCart();
     prefs.setStringList(AppConstants.CART_HISTORY_LIST, cartHistory);
+    getCartHistoryList();
   }
 
   List<CartModel> getCartList() {
@@ -33,5 +36,18 @@ class CartRepo {
     return list;
   }
 
-  void removeCart() => prefs.remove(AppConstants.CART_LIST);
+  List<CartModel> getCartHistoryList() {
+    List<CartModel> list = [];
+    if (prefs.containsKey(AppConstants.CART_HISTORY_LIST)) {
+      prefs.getStringList(AppConstants.CART_HISTORY_LIST)?.forEach((e) {
+        list.add(CartModel.fromJson(e));
+      });
+    }
+    return list;
+  }
+
+  void removeCart() {
+    cart.clear();
+    prefs.remove(AppConstants.CART_LIST);
+  }
 }
