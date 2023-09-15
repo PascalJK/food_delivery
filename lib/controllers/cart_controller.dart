@@ -37,6 +37,15 @@ class CartController extends GetxController {
     cartRepo.addToCartList(getCartList);
   }
 
+  void addToHistory() {
+    cartRepo.addToCartHistoryList();
+    clear();
+  }
+
+  void clear() {
+    _items.clear();
+  }
+
   void updateCartItemQty(CartModel i, int qty) {
     if (i.quantity! + qty <= 0) return;
     addItem(i.product!, i.quantity! + qty);
@@ -49,10 +58,6 @@ class CartController extends GetxController {
     } else {
       // TODO toast error
     }
-  }
-
-  void addToHistory() {
-    cartRepo.addToCartHistoryList();
   }
 
   int getQuantity(ProductModel model) {
