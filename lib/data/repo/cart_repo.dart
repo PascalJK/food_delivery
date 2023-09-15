@@ -12,8 +12,9 @@ class CartRepo {
 
   void addToCartList(List<CartModel> list) {
     cart = [];
+    var time = DateTime.now().toString();
     for (var element in list) {
-      cart.add(element.toJson());
+      cart.add(element.copyWith(time: time).toJson());
     }
     prefs.setStringList(AppConstants.CART_LIST, cart);
   }
