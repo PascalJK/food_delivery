@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/text/big.dart';
 
-class CartHistory extends StatelessWidget {
-  const CartHistory({super.key});
+class CartHistoryPage extends StatelessWidget {
+  const CartHistoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
