@@ -32,4 +32,6 @@ class CartRepo {
     }
     return list;
   }
+
+  void removeCart() => prefs.remove(AppConstants.CART_LIST);
 }
