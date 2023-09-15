@@ -168,7 +168,7 @@ class CartPage extends StatelessWidget {
                   horizontal: Dimensions.height20,
                   vertical: Dimensions.height20,
                 ),
-                onPressed: () {},
+                onPressed: () => c.addToHistory(),
                 color: AppColors.mainColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
