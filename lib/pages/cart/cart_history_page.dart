@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
+import 'package:food_delivery/components/text/small.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -16,7 +17,7 @@ class CartHistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var getCartHistoryList = Get.find<CartController>().cartRepo.getCartHistoryList();
+    var getCartHistoryList = Get.find<CartController>().getCartHistoryList();
     Map<String, int> cartItemsPerOrder = {};
 
     for (var c in getCartHistoryList) {
@@ -56,41 +57,77 @@ class CartHistoryPage extends StatelessWidget {
                 right: Dimensions.width20,
                 left: Dimensions.width20,
               ),
-              child: ListView(
-                children: [
-                  for (var i in itemsPerOrder)
-                    Container(
-                      margin: EdgeInsets.only(bottom: Dimensions.height20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          BigText(text: '02/12/2023'),
-                          Row(
-                            children: [
-                              Wrap(
-                                direction: Axis.horizontal,
-                                children: List.generate(itemsPerOrder[i], (index) {
-                                  if (listCounter < getCartHistoryList.length) {
-                                    listCounter++;
-                                  }
-                                  return Container(
-                                    height: 80,
-                                    width: 80,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage(AppConstants.UPLOAD_URL +
-                                            getCartHistoryList[listCounter - 1].img!),
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView(
+                  children: [
+                    for (int i in itemsPerOrder)
+                      Container(
+                        height: 120,
+                        margin: EdgeInsets.only(bottom: Dimensions.height20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BigText(text: getCartHistoryList[listCounter].time!),
+                            SizedBox(height: Dimensions.height10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Wrap(
+                                  direction: Axis.horizontal,
+                                  children: List.generate(i > 3 ? 3 : i, (index) {
+                                    if (listCounter < getCartHistoryList.length) {
+                                      listCounter++;
+                                    }
+                                    return Container(
+                                      height: 80,
+                                      width: 80,
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: Dimensions.width10 / 2),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(Dimensions.radius15 / 2),
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: NetworkImage(AppConstants.UPLOAD_URL +
+                                              getCartHistoryList[listCounter - 1].img!),
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                ],
+                                    );
+                                  }),
+                                ),
+                                Container(
+                                  height: 80,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SmallText(text: 'Total', color: AppColors.titleColor),
+                                      BigText(text: '$i Items', color: AppColors.titleColor),
+                                      Container(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: Dimensions.width10,
+                                          vertical: Dimensions.height10 / 2,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(Dimensions.radius15 / 3),
+                                          border: Border.all(width: 1, color: AppColors.mainColor),
+                                        ),
+                                        child:
+                                            SmallText(text: 'One More', color: AppColors.mainColor),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                  ],
+                ),
               ),
             ),
           ),
