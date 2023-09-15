@@ -7,6 +7,7 @@ import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class CartHistoryPage extends StatelessWidget {
   const CartHistoryPage({super.key});
@@ -69,7 +70,14 @@ class CartHistoryPage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            BigText(text: getCartHistoryList[listCounter].time!),
+                            /// Used to run a method inside a widget
+                            /// Study this more
+                            (() {
+                              var d = DateFormat('yyyy-MM-dd HH:mm:ss')
+                                  .parse(getCartHistoryList[listCounter].time!);
+                              var f = DateFormat('MM/dd/yyyy HH:mm').format(d);
+                              return BigText(text: f);
+                            }()),
                             SizedBox(height: Dimensions.height10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
