@@ -44,6 +44,7 @@ class CartController extends GetxController {
 
   void clear() {
     _items.clear();
+    update();
   }
 
   void updateCartItemQty(CartModel i, int qty) {
