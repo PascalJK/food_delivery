@@ -8,6 +8,7 @@ class AppConstants {
 
   // SharedPrefs Key
   static const String CART_LIST = 'cart-list';
+  static const String CART_HISTORY_LIST = 'cart-history-list';
 
   static const String BASE_URL = 'https://mvs.bslmeiyu.com';
   static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
