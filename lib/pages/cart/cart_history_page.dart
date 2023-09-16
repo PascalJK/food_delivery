@@ -29,9 +29,9 @@ class CartHistoryPage extends StatelessWidget {
       }
     }
 
-    List<int> cartOrderTimeToList() => cartItemsPerOrder.entries.map((e) => e.value).toList();
+    List<int> cartItemsPerOrderToList() => cartItemsPerOrder.entries.map((e) => e.value).toList();
 
-    List<int> itemsPerOrder = cartOrderTimeToList();
+    List<int> itemsPerOrder = cartItemsPerOrderToList();
 
     var listCounter = 0;
 
