@@ -91,4 +91,9 @@ class CartController extends GetxController {
       _items.putIfAbsent(i.product!.id!, () => i);
     }
   }
+
+  set setItems(Map<int, CartModel> setitems) {
+    _items.clear();
+    _items.addAll(setitems);
+  }
 }
