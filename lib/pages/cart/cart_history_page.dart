@@ -31,6 +31,8 @@ class CartHistoryPage extends StatelessWidget {
 
     List<int> cartItemsPerOrderToList() => cartItemsPerOrder.entries.map((e) => e.value).toList();
 
+    List<String> cartOrderTimeToList() => cartItemsPerOrder.entries.map((e) => e.key).toList();
+
     List<int> itemsPerOrder = cartItemsPerOrderToList();
 
     var listCounter = 0;
@@ -117,6 +119,9 @@ class CartHistoryPage extends StatelessWidget {
                                       SmallText(text: 'Total', color: AppColors.titleColor),
                                       BigText(text: '$i Items', color: AppColors.titleColor),
                                       GestureDetector(
+                                        onTap: () {
+                                          
+                                        },
                                         child: Container(
                                           padding: EdgeInsets.symmetric(
                                             horizontal: Dimensions.width10,
