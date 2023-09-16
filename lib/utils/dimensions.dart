@@ -52,5 +52,5 @@ class Dimensions {
   static double splashImgWidthSize = screenHeight / 3.38;
 
   // cart history
-  static double containerHieght = height10 * 10;
+  static double containerHieght120 = height10 * 12;
 }
