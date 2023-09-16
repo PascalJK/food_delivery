@@ -77,12 +77,13 @@ class CartHistoryPage extends StatelessWidget {
                           //     print('My order info ${ot}');
                           //   }
                           // }
-                          // for (var o in getCartHistoryList) {
-                          //   if (o.time! == ot) {
-                          //     orderDetail.putIfAbsent(o.id!, () => o);
-                          //     print('My order info ${o.name}');
-                          //   }
-                          // }
+                          for (var o in getCartHistoryList) {
+                            if (o.time! == ot) {
+                              orderDetail.putIfAbsent(o.id!, () => o);
+                              print('My order info ${o.name}');
+                              print('Order List Count: ${orderDetail.values}');
+                            }
+                          }
                         },
                         child: Container(
                           height: Dimensions.containerHieght120,
