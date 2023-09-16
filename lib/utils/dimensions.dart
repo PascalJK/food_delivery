@@ -54,4 +54,5 @@ class Dimensions {
   // cart history
   static double containerHieght100 = height10 * 10;
   static double containerHieght120 = height10 * 12;
+  static double imgSize80 = height20 * 4;
 }
