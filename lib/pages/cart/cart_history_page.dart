@@ -41,8 +41,8 @@ class CartHistoryPage extends StatelessWidget {
           Container(
             width: double.maxFinite,
             color: AppColors.mainColor,
-            padding: const EdgeInsets.only(top: 45),
-            height: 100,
+            padding: EdgeInsets.only(top: Dimensions.height45),
+            height: Dimensions.containerHieght100,
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -65,7 +65,7 @@ class CartHistoryPage extends StatelessWidget {
                   children: [
                     for (int i in itemsPerOrder)
                       Container(
-                        height: 120,
+                        height: Dimensions.containerHieght120,
                         margin: EdgeInsets.only(bottom: Dimensions.height20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,8 +92,8 @@ class CartHistoryPage extends StatelessWidget {
                                       listCounter++;
                                     }
                                     return Container(
-                                      height: 80,
-                                      width: 80,
+                                      height: Dimensions.imgSize80,
+                                      width: Dimensions.imgSize80,
                                       margin:
                                           EdgeInsets.symmetric(horizontal: Dimensions.width10 / 2),
                                       decoration: BoxDecoration(
@@ -108,8 +108,8 @@ class CartHistoryPage extends StatelessWidget {
                                     );
                                   }),
                                 ),
-                                Container(
-                                  height: 80,
+                                SizedBox(
+                                  height: Dimensions.imgSize80,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
