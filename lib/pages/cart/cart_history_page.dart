@@ -3,6 +3,7 @@ import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/models/cart_model.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -65,64 +66,81 @@ class CartHistoryPage extends StatelessWidget {
                 removeTop: true,
                 child: ListView(
                   children: [
-                    for (int i in itemsPerOrder)
-                      Container(
-                        height: Dimensions.containerHieght120,
-                        margin: EdgeInsets.only(bottom: Dimensions.height20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // #region Used to run a method inside a widget
-                            /// Study this more
-                            (() {
-                              var d = DateFormat('yyyy-MM-dd HH:mm:ss')
-                                  .parse(getCartHistoryList[listCounter].time!);
-                              var f = DateFormat('MM/dd/yyyy HH:mm').format(d);
-                              return BigText(text: f);
-                            }()),
+                    for (int i = 0; i < itemsPerOrder.length; i++)
+                      InkWell(
+                        onTap: () {
+                          var ot = cartOrderTimeToList()[i];
+                          print('Order time : $ot');
+                          Map<int, CartModel> orderDetail = {};
+                          // for (var j = 0; j < getCartHistoryList.length; j++) {
+                          //   if (getCartHistoryList[j].time! == ot) {
+                          //     print('My order info ${ot}');
+                          //   }
+                          // }
+                          // for (var o in getCartHistoryList) {
+                          //   if (o.time! == ot) {
+                          //     orderDetail.putIfAbsent(o.id!, () => o);
+                          //     print('My order info ${o.name}');
+                          //   }
+                          // }
+                        },
+                        child: Container(
+                          height: Dimensions.containerHieght120,
+                          margin: EdgeInsets.only(bottom: Dimensions.height20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // #region Used to run a method inside a widget
+                              /// Study this more
+                              (() {
+                                var d = DateFormat('yyyy-MM-dd HH:mm:ss')
+                                    .parse(getCartHistoryList[listCounter].time!);
+                                var f = DateFormat('MM/dd/yyyy HH:mm').format(d);
+                                return BigText(text: f);
+                              }()),
 
-                            ///
-                            // #endregion
-                            SizedBox(height: Dimensions.height10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Wrap(
-                                  direction: Axis.horizontal,
-                                  children: List.generate(i > 3 ? 3 : i, (index) {
-                                    if (listCounter < getCartHistoryList.length) {
-                                      listCounter++;
-                                    }
-                                    return Container(
-                                      height: Dimensions.imgSize80,
-                                      width: Dimensions.imgSize80,
-                                      margin:
-                                          EdgeInsets.symmetric(horizontal: Dimensions.width10 / 2),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(Dimensions.radius15 / 2),
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: NetworkImage(AppConstants.UPLOAD_URL +
-                                              getCartHistoryList[listCounter - 1].img!),
+                              ///
+                              // #endregion
+                              SizedBox(height: Dimensions.height10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Wrap(
+                                    direction: Axis.horizontal,
+                                    children: List.generate(
+                                        itemsPerOrder[i] > 3 ? 3 : itemsPerOrder[i], (index) {
+                                      if (listCounter < getCartHistoryList.length) {
+                                        listCounter++;
+                                      }
+                                      return Container(
+                                        height: Dimensions.imgSize80,
+                                        width: Dimensions.imgSize80,
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: Dimensions.width10 / 2),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(Dimensions.radius15 / 2),
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(AppConstants.UPLOAD_URL +
+                                                getCartHistoryList[listCounter - 1].img!),
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  }),
-                                ),
-                                SizedBox(
-                                  height: Dimensions.imgSize80,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      SmallText(text: 'Total', color: AppColors.titleColor),
-                                      BigText(text: '$i Items', color: AppColors.titleColor),
-                                      GestureDetector(
-                                        onTap: () {
-                                          
-                                        },
-                                        child: Container(
+                                      );
+                                    }),
+                                  ),
+                                  SizedBox(
+                                    height: Dimensions.imgSize80,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SmallText(text: 'Total', color: AppColors.titleColor),
+                                        BigText(
+                                          text: '${itemsPerOrder[i]} Items',
+                                          color: AppColors.titleColor,
+                                        ),
+                                        Container(
                                           padding: EdgeInsets.symmetric(
                                             horizontal: Dimensions.width10,
                                             vertical: Dimensions.height10 / 2,
@@ -130,18 +148,19 @@ class CartHistoryPage extends StatelessWidget {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(Dimensions.radius15 / 3),
-                                            border: Border.all(width: 1, color: AppColors.mainColor),
+                                            border:
+                                                Border.all(width: 1, color: AppColors.mainColor),
                                           ),
-                                          child:
-                                              SmallText(text: 'One More', color: AppColors.mainColor),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ],
+                                          child: SmallText(
+                                              text: 'One More', color: AppColors.mainColor),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       )
                   ],
