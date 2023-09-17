@@ -173,7 +173,7 @@ class CartPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   BigText(text: item.name!),
-                  SmallText(text: 'text'),
+                  const SmallText(text: 'text'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
