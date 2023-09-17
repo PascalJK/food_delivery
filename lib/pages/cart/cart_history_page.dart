@@ -72,18 +72,10 @@ class CartHistoryPage extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           var ot = cartOrderTimeToList()[i];
-                          // print('Order time : $ot');
                           Map<int, CartModel> ordersMap = {};
-                          // for (var j = 0; j < getCartHistoryList.length; j++) {
-                          //   if (getCartHistoryList[j].time! == ot) {
-                          //     print('My order info ${ot}');
-                          //   }
-                          // }
                           for (var o in getCartHistoryList) {
                             if (o.time! == ot) {
                               ordersMap.putIfAbsent(o.id!, () => o);
-                              // print('My order info ${o.name}');
-                              // print('Order List Count: ${ordersMap.values}');
                             }
                           }
                           controller.setItems = ordersMap;
