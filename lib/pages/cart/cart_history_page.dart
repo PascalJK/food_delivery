@@ -21,26 +21,6 @@ class CartHistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.find<CartController>();
-    var getCartHistoryList = controller.getCartHistoryList().reversed.toList();
-    Map<String, int> cartItemsPerOrder = {};
-
-    for (var c in getCartHistoryList) {
-      if (cartItemsPerOrder.containsKey(c.time)) {
-        cartItemsPerOrder.update(c.time!, (value) => ++value);
-      } else {
-        cartItemsPerOrder.putIfAbsent(c.time!, () => 1);
-      }
-    }
-
-    List<int> cartItemsPerOrderToList() => cartItemsPerOrder.entries.map((e) => e.value).toList();
-
-    List<String> cartOrderTimeToList() => cartItemsPerOrder.entries.map((e) => e.key).toList();
-
-    List<int> itemsPerOrder = cartItemsPerOrderToList();
-
-    var listCounter = 0;
-
     return Scaffold(
       body: Column(
         children: [
@@ -57,10 +37,41 @@ class CartHistoryPage extends StatelessWidget {
               ],
             ),
           ),
-          GetBuilder<CartController>(builder: (c) {
-            return c.getCartList.isNotEmpty
-                ? Expanded(
-                    child: Container(
+          Expanded(
+            child: GetBuilder<CartController>(builder: (c) {
+              // #region Temp Code
+              /// TODO: Create a Order Model
+              var getCartHistoryList = c.getCartHistoryList().reversed.toList();
+              Map<String, int> cartItemsPerOrder = {};
+
+              for (var c in getCartHistoryList) {
+                if (cartItemsPerOrder.containsKey(c.time)) {
+                  cartItemsPerOrder.update(c.time!, (value) => ++value);
+                } else {
+                  cartItemsPerOrder.putIfAbsent(c.time!, () => 1);
+                }
+              }
+
+              List<int> cartItemsPerOrderToList() => cartItemsPerOrder.entries.map((e) => e.value).toList();
+
+              List<String> cartOrderTimeToList() => cartItemsPerOrder.entries.map((e) => e.key).toList();
+
+              List<int> itemsPerOrder = cartItemsPerOrderToList();
+
+              var listCounter = 0;
+
+              Widget timeWidget(int index) {
+                String date = '---';
+                if (index < getCartHistoryList.length) {
+                  var d = DateFormat('yyyy-MM-dd HH:mm:ss').parse(getCartHistoryList[listCounter].time!);
+                  date = DateFormat('MM/dd/yyyy HH:mm').format(d);
+                }
+                return BigText(text: date);
+              }
+              // #endregion
+
+              return c.getCartList.isNotEmpty
+                  ? Container(
                       margin: EdgeInsets.only(
                         top: Dimensions.height20,
                         right: Dimensions.width20,
@@ -81,8 +92,8 @@ class CartHistoryPage extends StatelessWidget {
                                       ordersMap.putIfAbsent(o.id!, () => o);
                                     }
                                   }
-                                  controller.setItems = ordersMap;
-                                  controller.addToCartList();
+                                  c.setItems = ordersMap;
+                                  c.addToCartList();
                                   Get.toNamed(RouteHelper.cart);
                                 },
                                 child: Container(
@@ -91,17 +102,7 @@ class CartHistoryPage extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      // #region Used to run a method inside a widget
-                                      /// Study this more
-                                      (() {
-                                        var d = DateFormat('yyyy-MM-dd HH:mm:ss')
-                                            .parse(getCartHistoryList[listCounter].time!);
-                                        var f = DateFormat('MM/dd/yyyy HH:mm').format(d);
-                                        return BigText(text: f);
-                                      }()),
-
-                                      ///
-                                      // #endregion
+                                      timeWidget(listCounter),
                                       SizedBox(height: Dimensions.height10),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,10 +170,10 @@ class CartHistoryPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
-                  )
-                : const NoDataPage(text: 'No history data');
-          }),
+                    )
+                  : const NoDataPage(text: 'You haven\'t made any purchases yet.');
+            }),
+          ),
         ],
       ),
     );
