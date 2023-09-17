@@ -37,6 +37,11 @@ class CartController extends GetxController {
     cartRepo.addToCartList(getCartList);
   }
 
+  void addToCartList() {
+    cartRepo.addToCartList(getCartList);
+    update();
+  }
+
   void addToHistory() {
     cartRepo.addToCartHistoryList();
     clear();
