@@ -55,8 +55,8 @@ class CartPage extends StatelessWidget {
           // list view
           Positioned(
             top: Dimensions.height20 * 5,
-            left: Dimensions.width20,
-            right: Dimensions.width20,
+            left: Dimensions.width10,
+            right: Dimensions.width10,
             bottom: 0,
             child: Container(
               margin: EdgeInsets.only(top: Dimensions.height15),
@@ -123,8 +123,9 @@ class CartPage extends StatelessWidget {
   }
 
   Widget _cartItemView(CartModel item, CartController c) {
-    return GestureDetector(
-      onTap: () {
+    return MaterialButton(
+      padding: EdgeInsets.symmetric(horizontal: Dimensions.width10 / 2),
+      onPressed: () {
         // var index =
         //     Get.find<PopularProductController>().getPopularProductList.indexOf(item.product!);
         // if (index >= 0) {
@@ -141,13 +142,13 @@ class CartPage extends StatelessWidget {
       child: Container(
         height: Dimensions.containerHieght100,
         width: double.maxFinite,
-        margin: const EdgeInsets.only(bottom: 8),
+        padding: EdgeInsets.only(top: Dimensions.height10 / 5),
         child: Row(
           children: [
             Container(
               height: Dimensions.containerHieght100,
               width: Dimensions.containerHieght100,
-              margin: EdgeInsets.only(bottom: Dimensions.height10),
+              margin: EdgeInsets.only(bottom: Dimensions.height10 / 2),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white,
@@ -159,46 +160,47 @@ class CartPage extends StatelessWidget {
             ),
             SizedBox(width: Dimensions.width10),
             Expanded(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                BigText(text: item.name!),
-                SmallText(text: 'text'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    BigText(text: '\$${item.price!}'),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.height10,
-                        vertical: Dimensions.height10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  BigText(text: item.name!),
+                  SmallText(text: 'text'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BigText(text: '\$${item.price!}'),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.height10,
+                          vertical: Dimensions.height10 / 2,
+                        ),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.radius20),
+                            color: Colors.white,
+                            border: Border.all(color: AppColors.mainColor)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () => c.updateCartItemQty(item, -1),
+                              child: Icon(Icons.remove, color: AppColors.signColor),
+                            ),
+                            SizedBox(width: Dimensions.width10 / 2),
+                            BigText(text: '${item.quantity}'),
+                            SizedBox(width: Dimensions.width10 / 2),
+                            GestureDetector(
+                              onTap: () => c.updateCartItemQty(item, 1),
+                              child: Icon(Icons.add, color: AppColors.signColor),
+                            ),
+                          ],
+                        ),
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimensions.radius20),
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () => c.updateCartItemQty(item, -1),
-                            child: Icon(Icons.remove, color: AppColors.signColor),
-                          ),
-                          SizedBox(width: Dimensions.width10 / 2),
-                          BigText(text: '${item.quantity}'),
-                          SizedBox(width: Dimensions.width10 / 2),
-                          GestureDetector(
-                            onTap: () => c.updateCartItemQty(item, 1),
-                            child: Icon(Icons.add, color: AppColors.signColor),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ))
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
