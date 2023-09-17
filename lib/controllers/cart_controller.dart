@@ -28,12 +28,23 @@ class CartController extends GetxController {
       time: DateTime.now().toString(),
       product: product,
     );
-
-    if (!_items.containsKey(product.id)) {
+    /// Temp Code
+    /// TODO:
+    /// 1. Use a button/swipeview to allow the user to delete an item from cart
+    /// 2. Remove this code and use the O.G code.
+    if (quantity < 1) {
+      tryRemoveItem(product);
+    } else if (!_items.containsKey(product.id)) {
       _items.putIfAbsent(product.id!, () => p);
     } else {
       _items.update(product.id!, (value) => value.copyWith(quantity: quantity));
     }
+    // O.G Code..
+    // if (!_items.containsKey(product.id)) {
+    //   _items.putIfAbsent(product.id!, () => p);
+    // } else {
+    //   _items.update(product.id!, (value) => value.copyWith(quantity: quantity));
+    // }
     cartRepo.addToCartList(getCartList);
   }
 
@@ -53,7 +64,7 @@ class CartController extends GetxController {
   }
 
   void updateCartItemQty(CartModel i, int qty) {
-    if (i.quantity! + qty <= 0) return;
+    // if (i.quantity! + qty <= 0) return;
     addItem(i.product!, i.quantity! + qty);
     update();
   }
