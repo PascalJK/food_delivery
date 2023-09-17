@@ -3,6 +3,7 @@ import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/models/cart_model.dart';
+import 'package:food_delivery/pages/base/no_data_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -53,71 +54,78 @@ class CartPage extends StatelessWidget {
             ),
           ),
           // list view
-          Positioned(
-            top: Dimensions.height20 * 5,
-            left: Dimensions.width10,
-            right: Dimensions.width10,
-            bottom: 0,
-            child: Container(
-              margin: EdgeInsets.only(top: Dimensions.height15),
-              child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: GetBuilder<CartController>(builder: (c) {
-                  return ListView.builder(
-                    itemCount: c.getCartList.length,
-                    itemBuilder: (context, index) {
-                      final item = c.getCartList[index];
-                      return _cartItemView(item, c);
-                    },
-                  );
-                }),
-              ),
-            ),
-          ),
+          GetBuilder<CartController>(builder: (c) {
+            return c.getCartList.isNotEmpty
+                ? Positioned(
+                    top: Dimensions.height20 * 5,
+                    left: Dimensions.width10,
+                    right: Dimensions.width10,
+                    bottom: 0,
+                    child: Container(
+                      margin: EdgeInsets.only(top: Dimensions.height15),
+                      child: MediaQuery.removePadding(
+                        context: context,
+                        removeTop: true,
+                        child: ListView.builder(
+                          itemCount: c.getCartList.length,
+                          itemBuilder: (context, index) {
+                            final item = c.getCartList[index];
+                            return _cartItemView(item, c);
+                          },
+                        ),
+                      ),
+                    ),
+                  )
+                : const NoDataPage(text: 'No data to display');
+          }),
         ],
       ),
       bottomNavigationBar: GetBuilder<CartController>(
-        builder: (c) => Container(
-          padding: EdgeInsets.symmetric(
-            vertical: Dimensions.height10,
-            horizontal: Dimensions.height20,
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.buttonBackgroundColor,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(Dimensions.radius20 * 2)),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height20,
-                  vertical: Dimensions.height20,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius20),
-                  color: Colors.white,
-                ),
-                child: BigText(text: '\$${c.getTotalPrice}'),
-              ),
-              MaterialButton(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.height20,
-                  vertical: Dimensions.height20,
-                ),
-                onPressed: () => c.addToHistory(),
-                color: AppColors.mainColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
-                child: const BigText(
-                  text: 'Checkout',
-                  color: Colors.white,
-                ),
-              )
-            ],
-          ),
-        ),
+        builder: (c) {
+          return c.getCartList.isNotEmpty
+              ? Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: Dimensions.height10,
+                    horizontal: Dimensions.height20,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.buttonBackgroundColor,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(Dimensions.radius20 * 2)),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.height20,
+                          vertical: Dimensions.height20,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20),
+                          color: Colors.white,
+                        ),
+                        child: BigText(text: '\$${c.getTotalPrice}'),
+                      ),
+                      MaterialButton(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Dimensions.height20,
+                          vertical: Dimensions.height20,
+                        ),
+                        onPressed: () => c.addToHistory(),
+                        color: AppColors.mainColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
+                        child: const BigText(
+                          text: 'Checkout',
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              : const SizedBox();
+        },
       ),
     );
   }
