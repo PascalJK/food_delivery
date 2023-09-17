@@ -4,6 +4,7 @@ import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/small.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/models/cart_model.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -19,7 +20,8 @@ class CartHistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var getCartHistoryList = Get.find<CartController>().getCartHistoryList().reversed.toList();
+    var controller = Get.find<CartController>();
+    var getCartHistoryList = controller.getCartHistoryList().reversed.toList();
     Map<String, int> cartItemsPerOrder = {};
 
     for (var c in getCartHistoryList) {
@@ -70,8 +72,8 @@ class CartHistoryPage extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           var ot = cartOrderTimeToList()[i];
-                          print('Order time : $ot');
-                          Map<int, CartModel> orderDetail = {};
+                          // print('Order time : $ot');
+                          Map<int, CartModel> ordersMap = {};
                           // for (var j = 0; j < getCartHistoryList.length; j++) {
                           //   if (getCartHistoryList[j].time! == ot) {
                           //     print('My order info ${ot}');
@@ -79,11 +81,14 @@ class CartHistoryPage extends StatelessWidget {
                           // }
                           for (var o in getCartHistoryList) {
                             if (o.time! == ot) {
-                              orderDetail.putIfAbsent(o.id!, () => o);
-                              print('My order info ${o.name}');
-                              print('Order List Count: ${orderDetail.values}');
+                              ordersMap.putIfAbsent(o.id!, () => o);
+                              // print('My order info ${o.name}');
+                              // print('Order List Count: ${ordersMap.values}');
                             }
                           }
+                          controller.setItems = ordersMap;
+                          controller.addToCartList();
+                          Get.toNamed(RouteHelper.cart);
                         },
                         child: Container(
                           height: Dimensions.containerHieght120,
