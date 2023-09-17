@@ -6,7 +6,7 @@ import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimensions.dart';
+// import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;
 
@@ -48,7 +48,8 @@ class MainApp extends StatelessWidget {
             ),
             buttonTheme: ButtonThemeData(
               shape: BeveledRectangleBorder(
-                borderRadius: BorderRadius.circular(Dimensions.radius5),
+                borderRadius: BorderRadius.circular(6),
+                // borderRadius: BorderRadius.circular(Dimensions.radius5),
               ),
             ),
           ),
