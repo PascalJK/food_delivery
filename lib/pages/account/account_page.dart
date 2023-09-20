@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/components/account_widget.dart';
 import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -24,13 +25,26 @@ class AccountPage extends StatelessWidget {
         width: double.maxFinite,
         child: Column(
           children: [
+            
             AppIcon(
               icon: Icons.person,
               bgColor: AppColors.mainColor,
               iconColor: Colors.white,
-              iconSize: 75,
-              size: 150,
-            )
+              iconSize: Dimensions.accAppIconSize75,
+              size: Dimensions.accAppIconSize150,
+            ),
+            SizedBox(height: Dimensions.height20),
+            const AccountWidget(
+              iconData: Icons.account_circle_outlined,
+              bgColor: Colors.blueAccent,
+              text: 'Suniel Lionel Jobbs',
+            ),
+            SizedBox(height: Dimensions.height10),
+            const AccountWidget(
+              iconData: Icons.account_circle_outlined,
+              bgColor: Colors.blueAccent,
+              text: 'Testing Fire Close',
+            ),
           ],
         ),
       ),
