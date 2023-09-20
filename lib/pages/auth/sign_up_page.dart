@@ -9,15 +9,15 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: Dimensions.screenHeight*.05),
+          SizedBox(height: Dimensions.screenHeight * .05),
           // Image
           SizedBox(
-            height: Dimensions.screenHeight*.25,
+            height: Dimensions.screenHeight * .25,
             child: const Center(
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 80,
-                backgroundImage: AssetImage('assets/image/logo_part_1.png'),
+                backgroundImage: AssetImage('assets/image/logo part 1.png'),
               ),
             ),
           )
