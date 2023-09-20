@@ -2,12 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/home/food_page_body.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
+import 'package:get/get.dart';
 
 import '../../components/text/big.dart';
 import '../../components/text/small.dart';
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
 
 class MainFoodPage extends StatelessWidget {
   const MainFoodPage({super.key});
+  
+  Future<void> _loadResources() async {
+    await Future.wait([
+      Get.find<PopularProductController>().loadPopularProductList(),
+      Get.find<RecommendedProductController>().loadRecommendedProductList(),
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
