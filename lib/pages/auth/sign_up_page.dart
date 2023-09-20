@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/components/text/text_input_field.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -20,7 +21,15 @@ class SignUpPage extends StatelessWidget {
                 backgroundImage: AssetImage('assets/image/logo part 1.png'),
               ),
             ),
-          )
+          ),
+          // Input-fields
+          const TextInputField(controller: null, hint: 'Email', icon: Icons.email),
+          SizedBox(height: Dimensions.height15),
+          const TextInputField(controller: null, hint: 'Phone', icon: Icons.phone),
+          SizedBox(height: Dimensions.height15),
+          const TextInputField(controller: null, hint: 'Name', icon: Icons.person),
+          SizedBox(height: Dimensions.height15),
+          const TextInputField(controller: null, hint: 'Password', icon: Icons.password),
         ],
       ),
     );
