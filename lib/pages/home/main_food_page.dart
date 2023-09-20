@@ -11,7 +11,7 @@ import '../../controllers/recommended_product_controller.dart';
 
 class MainFoodPage extends StatelessWidget {
   const MainFoodPage({super.key});
-  
+
   Future<void> _loadResources() async {
     await Future.wait([
       Get.find<PopularProductController>().loadPopularProductList(),
@@ -65,7 +65,12 @@ class MainFoodPage extends StatelessWidget {
             ),
           ),
           // Body Content
-          const Expanded(child: SingleChildScrollView(child: FoodPageBody())),
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: _loadResources,
+              child: const SingleChildScrollView(child: FoodPageBody()),
+            ),
+          ),
         ],
       ),
     );
