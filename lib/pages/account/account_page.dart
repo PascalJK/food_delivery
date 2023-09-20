@@ -34,11 +34,11 @@ class AccountPage extends StatelessWidget {
               size: Dimensions.accAppIconSize150,
             ),
             SizedBox(height: Dimensions.height20),
-            // name
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    // name
                     AccountWidget(
                       iconData: Icons.account_circle_outlined,
                       bgColor: AppColors.mainColor,
