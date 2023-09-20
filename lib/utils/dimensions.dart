@@ -58,5 +58,6 @@ class Dimensions {
   static double imgSize80 = height20 * 4;
 
   // account page
-  static double appIconSize150 = height15 * 10;
+  static double accAppIconSize75 = height30 + height45;
+  static double accAppIconSize150 = height15 * 10;
 }
