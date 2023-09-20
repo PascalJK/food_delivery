@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import '../../utils/dimensions.dart';
 
 class TextInputField extends StatelessWidget {
-  const TextInputField({super.key});
+  const TextInputField({
+    super.key,
+    required this.controller,
+    required this.icon,
+    required this.hint,
+  });
+  final TextEditingController? controller;
+  final IconData icon;
+  final String hint;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +29,10 @@ class TextInputField extends StatelessWidget {
             ),
           ]),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
-          hintText: 'Email',
-          prefixIcon: const Icon(Icons.email),
+          hintText: hint,
+          prefixIcon: Icon(icon),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(Dimensions.radius15),
           ),
