@@ -25,7 +25,7 @@ class AccountPage extends StatelessWidget {
         width: double.maxFinite,
         child: Column(
           children: [
-            
+            // profile icon
             AppIcon(
               icon: Icons.person,
               bgColor: AppColors.mainColor,
@@ -34,16 +34,48 @@ class AccountPage extends StatelessWidget {
               size: Dimensions.accAppIconSize150,
             ),
             SizedBox(height: Dimensions.height20),
-            const AccountWidget(
-              iconData: Icons.account_circle_outlined,
-              bgColor: Colors.blueAccent,
-              text: 'Suniel Lionel Jobbs',
-            ),
-            SizedBox(height: Dimensions.height10),
-            const AccountWidget(
-              iconData: Icons.account_circle_outlined,
-              bgColor: Colors.blueAccent,
-              text: 'Testing Fire Close',
+            // name
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    AccountWidget(
+                      iconData: Icons.account_circle_outlined,
+                      bgColor: AppColors.mainColor,
+                      text: 'Suniel Lionel Jobbs',
+                    ),
+                    SizedBox(height: Dimensions.height10),
+                    // phone
+                    const AccountWidget(
+                      iconData: Icons.phone_outlined,
+                      bgColor: Colors.blueAccent,
+                      text: '+(264)817201880',
+                    ),
+                    SizedBox(height: Dimensions.height20),
+                    // email
+                    AccountWidget(
+                      iconData: Icons.email_outlined,
+                      bgColor: AppColors.yellowColor,
+                      text: 'jokingsuniel@india.bangala',
+                    ),
+                    SizedBox(height: Dimensions.height20),
+                    // address
+                    const AccountWidget(
+                      iconData: Icons.location_on_outlined,
+                      bgColor: Colors.orangeAccent,
+                      text: 'Filling your address',
+                    ),
+                    SizedBox(height: Dimensions.height20),
+                    // message
+                    const AccountWidget(
+                      iconData: Icons.message_outlined,
+                      bgColor: Colors.greenAccent,
+                      text: 'Messages',
+                    ),
+                    SizedBox(height: Dimensions.height20),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
