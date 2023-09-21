@@ -47,6 +47,7 @@ class MainApp extends StatelessWidget {
               color: AppColors.mainColor,
             ),
             buttonTheme: ButtonThemeData(
+              buttonColor: AppColors.mainColor,
               shape: BeveledRectangleBorder(
                 borderRadius: BorderRadius.circular(6),
                 // borderRadius: BorderRadius.circular(Dimensions.radius5),
