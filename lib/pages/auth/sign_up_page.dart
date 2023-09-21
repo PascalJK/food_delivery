@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/text/text_input_field.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 
+import '../../components/text/big.dart';
+import '../../utils/colors.dart';
+
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
@@ -30,6 +33,22 @@ class SignUpPage extends StatelessWidget {
           const TextInputField(controller: null, hint: 'Name', icon: Icons.person),
           SizedBox(height: Dimensions.height15),
           const TextInputField(controller: null, hint: 'Password', icon: Icons.password),
+          SizedBox(height: Dimensions.height30),
+          MaterialButton(
+            padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.height20,
+              vertical: Dimensions.height20,
+            ),
+            minWidth: Dimensions.screenWidth,
+            onPressed: () {},
+            color: AppColors.mainColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
+            child: const BigText(
+              text: 'Checkout',
+              color: Colors.white,
+            ),
+          )
         ],
       ),
     );
