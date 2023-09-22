@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/custom_snackbar.dart';
+import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/utils/validators/input_validators.dart';
-import 'package:get/get.dart';
 
-class SignUpController extends GetxController with InputValidator {
+class SignUpController extends AuthController with InputValidator {
   final email = TextEditingController();
   final name = TextEditingController();
   final contact = TextEditingController();
@@ -20,6 +20,12 @@ class SignUpController extends GetxController with InputValidator {
       showCustomSnackBar(validatePassword(password.text)!, title: 'Password');
     } else {
       showCustomSnackBar('All went well', title: 'Success');
+      // var acc = AccountModel(
+      //   name: name.text,
+      //   contact: contact.text,
+      //   email: email.text,
+      //   password: password.text,
+      // );
     }
   }
 }
