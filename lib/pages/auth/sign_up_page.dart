@@ -22,11 +22,11 @@ class SignUpPage extends StatelessWidget {
             // Image
             SizedBox(
               height: Dimensions.screenHeight * .25,
-              child: const Center(
+              child: Center(
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
-                  radius: 80,
-                  backgroundImage: AssetImage('assets/image/logo part 1.png'),
+                  radius: Dimensions.radius20 * 4,
+                  backgroundImage: const AssetImage('assets/image/logo part 1.png'),
                 ),
               ),
             ),
