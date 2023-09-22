@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-mixin InputValidator{
+mixin InputValidator {
   // Validators
   String? validateEmptyField(String value) {
     if (value.isEmpty) return "Field cannot be empty.";
@@ -25,10 +25,13 @@ mixin InputValidator{
     return null;
   }
 
-  String? validateConfirmationPassword(String password1, String password2) {
+  String? validatePassword(String password1) {
     if (password1.isEmpty) return "Type in your password.";
-    if (password1.length < 4) return "Password can not be less than (6) characters";
+    if (password1.length < 6) return "Password can not be less than (6) characters";
+    return null;
+  }
 
+  String? comparePassword(String password1, String password2) {
     // Compare Passwords
     if (password2 != password1) return "Passwords don't match";
     return null;
