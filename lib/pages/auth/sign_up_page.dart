@@ -48,7 +48,7 @@ class SignUpPage extends StatelessWidget {
                 vertical: Dimensions.height20,
               ),
               minWidth: Dimensions.screenWidth * .8,
-              onPressed: () {},
+              onPressed: () => controller.registration(),
               color: AppColors.mainColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
