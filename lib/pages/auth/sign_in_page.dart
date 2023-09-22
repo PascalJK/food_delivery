@@ -21,12 +21,12 @@ class SignInPage extends StatelessWidget {
             SizedBox(height: Dimensions.screenHeight * .05),
             // Image
             SizedBox(
-              height: Dimensions.screenHeight * .25,
-              child: const Center(
+              height: Dimensions.screenHeight * .28,
+              child: Center(
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
-                  radius: 80,
-                  backgroundImage: AssetImage('assets/image/logo part 1.png'),
+                  radius: Dimensions.radius30 * 3,
+                  backgroundImage: const AssetImage('assets/image/logo part 1.png'),
                 ),
               ),
             ),
@@ -106,7 +106,8 @@ class SignInPage extends StatelessWidget {
                   children: [
                     TextSpan(
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () => Get.to(() => const SignUpPage()),
+                        ..onTap =
+                            () => Get.to(() => const SignUpPage(), transition: Transition.fade),
                       text: 'Create',
                       style: TextStyle(
                           color: AppColors.mainBlackColor,
