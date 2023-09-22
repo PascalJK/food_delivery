@@ -4,10 +4,12 @@ import 'package:food_delivery/components/text/text_input_field.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 
 import '../../components/text/big.dart';
+import '../../controllers/sign_up_controller.dart';
 import '../../utils/colors.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+  SignUpPage({super.key});
+  final controller = SignUpController();
 
   @override
   Widget build(BuildContext context) {
