@@ -33,13 +33,13 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             // Input-fields
-            const TextInputField(controller: null, hint: 'Email', icon: Icons.email),
+            TextInputField(controller: controller.email, hint: 'Email', icon: Icons.email),
             SizedBox(height: Dimensions.height15),
-            const TextInputField(controller: null, hint: 'Phone', icon: Icons.phone),
+            TextInputField(controller: controller.contact, hint: 'Phone', icon: Icons.phone),
             SizedBox(height: Dimensions.height15),
-            const TextInputField(controller: null, hint: 'Name', icon: Icons.person),
+            TextInputField(controller: controller.name, hint: 'Name', icon: Icons.person),
             SizedBox(height: Dimensions.height15),
-            const TextInputField(controller: null, hint: 'Password', icon: Icons.password),
+            TextInputField(controller: controller.password, hint: 'Password', icon: Icons.password),
             // Sign up button
             SizedBox(height: Dimensions.height30),
             MaterialButton(
