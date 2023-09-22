@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/account/account_page.dart';
-import 'package:food_delivery/pages/auth/sign_up_page.dart';
+import 'package:food_delivery/pages/auth/sign_in_page.dart';
 import 'package:food_delivery/pages/cart/cart_history_page.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const MainFoodPage(),
     // const Center(child: Text('Test Page_1')),
-    const SignUpPage(),
+    const SignInPage(),
     const CartHistoryPage(),
     const AccountPage(),
   ];
