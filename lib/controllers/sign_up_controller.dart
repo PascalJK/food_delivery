@@ -19,5 +19,8 @@ class SignUpController extends GetxController with InputValidator {
     } else if (validatePassword(password.text) != null) {
       showCustomSnackBar(validatePassword(name.text)!, title: 'Password');
     }
+    else{
+      showCustomSnackBar('All went well', title: 'Success');
+    }
   }
 }
