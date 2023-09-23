@@ -12,7 +12,7 @@ class AuthController extends GetxController {
   bool _isloading = false;
   bool get isLoading => _isloading;
 
-  registration(AccountModel account) async {
+  Future<ResponseModel> registration(AccountModel account) async {
     _isloading = true;
     var res = await authRepo.registration(account);
     late ResponseModel responseModel;
