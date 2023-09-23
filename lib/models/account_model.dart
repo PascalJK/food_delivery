@@ -14,8 +14,8 @@ class AccountModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
-      'contact': contact,
+      'f_name': name,
+      'phone': contact,
       'email': email,
       'password': password,
     };
@@ -23,8 +23,8 @@ class AccountModel {
 
   factory AccountModel.fromMap(Map<String, dynamic> map) {
     return AccountModel(
-      name: map['name'] as String,
-      contact: map['contact'] as String,
+      name: map['f_name'] as String,
+      contact: map['phone'] as String,
       email: map['email'] as String,
       password: map['password'] as String,
     );
