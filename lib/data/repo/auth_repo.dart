@@ -1,4 +1,5 @@
 import 'package:food_delivery/utils/app_constants.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/account_model.dart';
@@ -10,7 +11,6 @@ class AuthRepo {
 
   AuthRepo({required this.apiClient, required this.preferences});
 
-  registration(AccountModel account){
-    apiClient.postData(AppConstants.REGISTRATION_URI, account.toMap());
-  }
+  Future<Response> registration(AccountModel account) async =>
+      await apiClient.postData(AppConstants.REGISTRATION_URI, account.toMap());
 }
