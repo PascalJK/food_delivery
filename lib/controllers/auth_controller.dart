@@ -20,7 +20,7 @@ class AuthController extends GetxController {
       authRepo.saveUserToken(res.body['token']);
       responseModel = ResponseModel(true, res.body['token']);
     } else {
-      responseModel = ResponseModel(true, res.body['token']);
+      responseModel = ResponseModel(true, res.statusText!);
     }
     _isloading = false;
     update();
