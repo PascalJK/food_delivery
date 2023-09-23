@@ -12,11 +12,13 @@ class ApiClient extends GetConnect implements GetxService {
     token = AppConstants.TOKEN;
     // Set allow auto signed cert to [true] to avoid: HandshakeException
     allowAutoSignedCert = true;
-    _mainHeaders = {
-      'Content-type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer $token',
-    };
+    updateHeader(token);
   }
+
+  void updateHeader(String token) => _mainHeaders = {
+        'Content-type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $token',
+      };
 
   Future<Response> getData(String uri) async {
     try {
