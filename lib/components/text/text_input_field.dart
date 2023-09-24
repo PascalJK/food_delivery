@@ -8,10 +8,12 @@ class TextInputField extends StatelessWidget {
     required this.controller,
     required this.icon,
     required this.hint,
+    this.obscureText = false,
   });
   final TextEditingController? controller;
   final IconData icon;
   final String hint;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class TextInputField extends StatelessWidget {
             ),
           ]),
       child: TextField(
+        obscureText: obscureText,
         controller: controller,
         decoration: InputDecoration(
           hintText: hint,
