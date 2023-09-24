@@ -16,6 +16,7 @@ class AppConstants {
   // static const String BASE_URL = 'https://mvs.bslmeiyu.com';
   static const String BASE_URL = 'http://192.168.43.252:8080';
 
+  static const String LOGIN_URI = '/api/v1/auth/login';
   static const String REGISTRATION_URI = '/api/v1/auth/register';
   static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
   static const String RECOMMENDED_PRODUCT_URI = '/api/v1/products/recommended';
