@@ -9,11 +9,10 @@ class AuthController extends GetxController {
 
   AuthController({required this.authRepo});
 
-  bool _isloading = false;
-  bool get isLoading => _isloading;
+  final RxBool isLoading = false.obs;
 
   Future<ResponseModel> registration(AccountModel account) async {
-    _isloading = true;
+    isLoading.value = true;
     var res = await authRepo.registration(account);
     late ResponseModel responseModel;
     if (res.statusCode == 200) {
@@ -22,7 +21,7 @@ class AuthController extends GetxController {
     } else {
       responseModel = ResponseModel(false, res.statusText!);
     }
-    _isloading = false;
+    isLoading.value = false;
     return responseModel;
   }
 }
