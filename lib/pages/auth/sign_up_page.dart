@@ -9,8 +9,7 @@ import '../../controllers/sign_up_controller.dart';
 import '../../utils/colors.dart';
 
 class SignUpPage extends StatelessWidget {
-  SignUpPage({super.key});
-  final controller = SignUpController();
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class SignUpPage extends StatelessWidget {
 
     return Scaffold(
       body: GetBuilder<SignUpController>(
-        builder: (c) {
+        builder: (controller) {
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
