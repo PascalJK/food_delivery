@@ -30,13 +30,14 @@ class SignUpController extends GetxController with InputValidator {
         email: email.text,
         password: password.text,
       );
-      _authController.registration(acc).then((status) {
+      await _authController.registration(acc).then((status) {
         if (status.getSuccess) {
           print('passed test');
         } else {
           showCustomSnackBar(status.getMessage);
         }
       });
+      update();
     }
   }
 }
