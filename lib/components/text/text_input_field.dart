@@ -22,9 +22,9 @@ class TextInputField extends StatelessWidget {
           borderRadius: BorderRadius.circular(Dimensions.radius15),
           boxShadow: [
             BoxShadow(
-              blurRadius: 10,
-              spreadRadius: 7,
-              offset: const Offset(1, 10),
+              blurRadius: 5,
+              spreadRadius: 3,
+              offset: const Offset(1, 1),
               color: Colors.grey.withOpacity(.2),
             ),
           ]),
