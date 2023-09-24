@@ -12,7 +12,7 @@ class SignUpController extends GetxController with InputValidator {
   final contact = TextEditingController();
   final password = TextEditingController();
 
-  final _authController = Get.find<AuthController>();
+  final authController = Get.find<AuthController>();
 
   Future<void> registration() async {
     if (validateEmail(email.text) != null) {
@@ -30,14 +30,13 @@ class SignUpController extends GetxController with InputValidator {
         email: email.text,
         password: password.text,
       );
-      await _authController.registration(acc).then((status) {
+      await authController.registration(acc).then((status) {
         if (status.getSuccess) {
           print('passed test');
         } else {
           showCustomSnackBar(status.getMessage);
         }
       });
-      update();
     }
   }
 }
