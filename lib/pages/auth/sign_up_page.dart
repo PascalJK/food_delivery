@@ -47,7 +47,12 @@ class SignUpPage extends StatelessWidget {
           SizedBox(height: Dimensions.height15),
           TextInputField(controller: controller.name, hint: 'Name', icon: Icons.person),
           SizedBox(height: Dimensions.height15),
-          TextInputField(controller: controller.password, hint: 'Password', icon: Icons.password),
+          TextInputField(
+            controller: controller.password,
+            hint: 'Password',
+            icon: Icons.password,
+            obscureText: true,
+          ),
           // Sign up button
           SizedBox(height: Dimensions.height30),
           MaterialButton(
