@@ -23,7 +23,6 @@ class AuthController extends GetxController {
       responseModel = ResponseModel(false, res.statusText!);
     }
     _isloading = false;
-    update();
     return responseModel;
   }
 }
