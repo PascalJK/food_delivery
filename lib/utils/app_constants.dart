@@ -12,7 +12,10 @@ class AppConstants {
 
 // Local Server Endpoint
 // Helpful Link : https://dev.to/ljnce/test-your-laravel-project-easily-with-phone-2l46#:~:text=Go%20to%20your%20Laravel%20application%20project%20-%3E%20open,your%20Laravel%20project%20on%20you%20mobile%20phone%20browser%21
-  static const String BASE_URL = 'follow helpful link';
+
+  // static const String BASE_URL = 'https://mvs.bslmeiyu.com';
+  static const String BASE_URL = 'http://192.168.43.252:8080';
+
   static const String REGISTRATION_URI = '/api/v1/auth/register';
   static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
   static const String RECOMMENDED_PRODUCT_URI = '/api/v1/products/recommended';
