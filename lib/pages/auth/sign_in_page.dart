@@ -58,7 +58,12 @@ class SignInPage extends StatelessWidget {
             SizedBox(height: Dimensions.height20),
             const TextInputField(controller: null, hint: 'Email', icon: Icons.email),
             SizedBox(height: Dimensions.height15),
-            const TextInputField(controller: null, hint: 'Password', icon: Icons.password),
+            const TextInputField(
+              controller: null,
+              hint: 'Password',
+              icon: Icons.password,
+              obscureText: true,
+            ),
             // Sign in button
             SizedBox(height: Dimensions.height30),
             MaterialButton(
@@ -106,8 +111,7 @@ class SignInPage extends StatelessWidget {
                   children: [
                     TextSpan(
                       recognizer: TapGestureRecognizer()
-                        ..onTap =
-                            () => Get.to(() => SignUpPage(), transition: Transition.fade),
+                        ..onTap = () => Get.to(() => SignUpPage(), transition: Transition.fade),
                       text: 'Create',
                       style: TextStyle(
                           color: AppColors.mainBlackColor,
