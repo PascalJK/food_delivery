@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/account_widget.dart';
 import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
+import 'package:food_delivery/controllers/auth_controller.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
+import 'package:get/get.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -74,10 +77,19 @@ class AccountPage extends StatelessWidget {
                     ),
                     Divider(height: Dimensions.height20, thickness: Dimensions.height15),
                     // logout
-                    const AccountWidget(
-                      iconData: Icons.logout,
-                      bgColor: Colors.redAccent,
-                      text: 'Logout',
+                    InkWell(
+                      onTap: () {
+                        var controller = Get.find<AuthController>();
+                        if (controller.isUserLoggedIn()) {
+                          controller.clearSharedData();
+                          Get.offNamed(RouteHelper.login);
+                        }
+                      },
+                      child: const AccountWidget(
+                        iconData: Icons.logout,
+                        bgColor: Colors.redAccent,
+                        text: 'Logout',
+                      ),
                     ),
                     SizedBox(height: Dimensions.height20 * 2),
                   ],
