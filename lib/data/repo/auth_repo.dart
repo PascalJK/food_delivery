@@ -17,6 +17,12 @@ class AuthRepo {
   Future<Response> registration(AccountModel account) async =>
       await apiClient.postData(AppConstants.REGISTRATION_URI, account.toMap());
 
+  Future<String> getUserToken(String token) async {
+    // apiClient.token = token;
+    // apiClient.updateHeader(token);
+    return preferences.getString(AppConstants.TOKEN) ?? 'null';
+  }
+
   Future<bool> saveUserToken(String token) async {
     apiClient.token = token;
     apiClient.updateHeader(token);
