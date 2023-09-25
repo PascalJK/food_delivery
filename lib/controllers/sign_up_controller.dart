@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/custom_snackbar.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/validators/input_validators.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,7 @@ class SignUpController extends GetxController with InputValidator {
       );
       await authController.registration(acc).then((status) {
         if (status.getSuccess) {
-          print('passed test');
+          Get.offAllNamed(RouteHelper.initial);
         } else {
           showCustomSnackBar(status.getMessage);
         }
