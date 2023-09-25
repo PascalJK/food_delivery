@@ -26,7 +26,8 @@ Future init() async {
   Get.lazyPut(() => CartRepo(prefs: Get.find<SharedPreferences>()));
 
   // controllers
-  Get.lazyPut(() => AuthController(authRepo: Get.find<AuthRepo>()));
+  // Get.lazyPut(() => AuthController(authRepo: Get.find<AuthRepo>()));
+  Get.put(AuthController(authRepo: Get.find<AuthRepo>()));
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find<PopularProductRepo>()));
   Get.lazyPut(() =>
       RecommendedProductController(recommendedProductRepo: Get.find<RecommendedProductRepo>()));
