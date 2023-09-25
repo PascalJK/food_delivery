@@ -43,7 +43,7 @@ class CartHistoryPage extends StatelessWidget {
               /// TODO: Create a Order Model
               var getCartHistoryList = c.getCartHistoryList().reversed.toList();
               Map<String, int> cartItemsPerOrder = {};
-
+              print(getCartHistoryList.length);
               for (var c in getCartHistoryList) {
                 if (cartItemsPerOrder.containsKey(c.time)) {
                   cartItemsPerOrder.update(c.time!, (value) => ++value);
@@ -52,9 +52,11 @@ class CartHistoryPage extends StatelessWidget {
                 }
               }
 
-              List<int> cartItemsPerOrderToList() => cartItemsPerOrder.entries.map((e) => e.value).toList();
+              List<int> cartItemsPerOrderToList() =>
+                  cartItemsPerOrder.entries.map((e) => e.value).toList();
 
-              List<String> cartOrderTimeToList() => cartItemsPerOrder.entries.map((e) => e.key).toList();
+              List<String> cartOrderTimeToList() =>
+                  cartItemsPerOrder.entries.map((e) => e.key).toList();
 
               List<int> itemsPerOrder = cartItemsPerOrderToList();
 
@@ -63,14 +65,15 @@ class CartHistoryPage extends StatelessWidget {
               Widget timeWidget(int index) {
                 String date = '---';
                 if (index < getCartHistoryList.length) {
-                  var d = DateFormat('yyyy-MM-dd HH:mm:ss').parse(getCartHistoryList[listCounter].time!);
+                  var d = DateFormat('yyyy-MM-dd HH:mm:ss')
+                      .parse(getCartHistoryList[listCounter].time!);
                   date = DateFormat('MM/dd/yyyy HH:mm').format(d);
                 }
                 return BigText(text: date);
               }
               // #endregion
 
-              return c.getCartList.isNotEmpty
+              return getCartHistoryList.isNotEmpty
                   ? Container(
                       margin: EdgeInsets.only(
                         top: Dimensions.height20,
