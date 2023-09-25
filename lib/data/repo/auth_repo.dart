@@ -22,4 +22,13 @@ class AuthRepo {
     apiClient.updateHeader(token);
     return await preferences.setString(AppConstants.TOKEN, token);
   }
+
+  Future saveUserNumberAndPassword(String number, String password) async {
+    try {
+      await preferences.setString(AppConstants.PHONE, number);
+      await preferences.setString(AppConstants.PASSWORD, number);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }
