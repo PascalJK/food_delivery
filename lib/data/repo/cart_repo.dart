@@ -51,4 +51,9 @@ class CartRepo {
     cart.clear();
     prefs.remove(AppConstants.CART_LIST);
   }
+
+  void clearCartHistory() {
+    removeCart();
+    prefs.remove(AppConstants.CART_HISTORY_LIST);
+  }
 }
