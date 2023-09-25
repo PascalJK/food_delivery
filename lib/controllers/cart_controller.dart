@@ -1,5 +1,7 @@
+import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/data/repo/cart_repo.dart';
 import 'package:food_delivery/models/cart_model.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:get/get.dart';
 
 import '../models/product_model.dart';
@@ -28,6 +30,7 @@ class CartController extends GetxController {
       time: DateTime.now().toString(),
       product: product,
     );
+
     /// Temp Code
     /// TODO:
     /// 1. Use a button/swipeview to allow the user to delete an item from cart
@@ -54,8 +57,12 @@ class CartController extends GetxController {
   }
 
   void addToHistory() {
-    cartRepo.addToCartHistoryList();
-    clear();
+    if (Get.find<AuthController>().isUserLoggedIn()) {
+      cartRepo.addToCartHistoryList();
+      clear();
+    } else {
+      Get.toNamed(RouteHelper.login);
+    }
   }
 
   void clear() {
