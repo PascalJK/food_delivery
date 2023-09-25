@@ -72,7 +72,14 @@ class AccountPage extends StatelessWidget {
                       bgColor: Colors.greenAccent,
                       text: 'Messages',
                     ),
-                    SizedBox(height: Dimensions.height20),
+                    Divider(height: Dimensions.height20, thickness: Dimensions.height15),
+                    // logout
+                    const AccountWidget(
+                      iconData: Icons.logout,
+                      bgColor: Colors.blueGrey,
+                      text: 'Logout',
+                    ),
+                    SizedBox(height: Dimensions.height20 * 2),
                   ],
                 ),
               ),
