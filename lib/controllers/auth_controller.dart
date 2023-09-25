@@ -44,4 +44,6 @@ class AuthController extends GetxController {
       authRepo.saveUserNumberAndPassword(email, password);
 
   bool isUserLoggedIn() => authRepo.isUserLoggedin();
+
+  bool clearSharedData() => authRepo.clearSharedData();
 }
