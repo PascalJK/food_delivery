@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 import '../components/custom_snackbar.dart';
 
-class LoginController extends GetxController with InputValidator {
+class SignInController extends GetxController with InputValidator {
   final email = TextEditingController();
   final password = TextEditingController();
 

@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/loading_indicator.dart';
-import 'package:food_delivery/controllers/login_controller.dart';
+import 'package:food_delivery/controllers/sign_in_controller.dart';
 import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +11,7 @@ import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 
 class SignInPage extends StatelessWidget {
-  final controller = LoginController();
+  final controller = SignInController();
   SignInPage({super.key});
 
   @override
