@@ -25,10 +25,10 @@ class SignUpController extends GetxController with InputValidator {
       showCustomSnackBar(validatePassword(password.text)!, title: 'Password');
     } else {
       var acc = AccountModel(
-        name: name.text,
-        contact: contact.text,
-        email: email.text,
-        password: password.text,
+        name: name.text.trim(),
+        contact: contact.text.trim(),
+        email: email.text.trim(),
+        password: password.text.trim(),
       );
       await authController.registration(acc).then((status) {
         if (status.getSuccess) {
