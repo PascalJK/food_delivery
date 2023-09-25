@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/login_controller.dart';
 import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,9 @@ import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+  SignInPage({super.key});
+
+  final controller = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +59,10 @@ class SignInPage extends StatelessWidget {
             ),
             // Input-fields
             SizedBox(height: Dimensions.height20),
-            const TextInputField(controller: null, hint: 'Email', icon: Icons.email),
+            TextInputField(controller: controller.email, hint: 'Email', icon: Icons.email),
             SizedBox(height: Dimensions.height15),
-            const TextInputField(
-              controller: null,
+            TextInputField(
+              controller: controller.password,
               hint: 'Password',
               icon: Icons.password,
               obscureText: true,
@@ -72,7 +75,7 @@ class SignInPage extends StatelessWidget {
                 vertical: Dimensions.height20,
               ),
               minWidth: Dimensions.screenWidth * .8,
-              onPressed: () {},
+              onPressed: () => controller.login(),
               color: AppColors.mainColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
