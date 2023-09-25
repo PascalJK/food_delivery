@@ -31,7 +31,7 @@ class AuthController extends GetxController {
     late ResponseModel responseModel;
     if (res.statusCode == 200) {
       authRepo.saveUserToken(res.body['token']);
-      authRepo.saveUserNumberAndPassword(email, password);
+      saveUserNumberAndPassword(email, password);
       responseModel = ResponseModel(true, res.body['token']);
     } else {
       responseModel = ResponseModel(false, res.statusText!);
@@ -39,4 +39,9 @@ class AuthController extends GetxController {
     isLoading.value = false;
     return responseModel;
   }
+
+  void saveUserNumberAndPassword(String email, String password) =>
+      authRepo.saveUserNumberAndPassword(email, password);
+
+  bool isUserLoggedIn() => authRepo.isUserLoggedin();
 }
