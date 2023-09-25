@@ -11,6 +11,9 @@ class AuthRepo {
 
   AuthRepo({required this.apiClient, required this.preferences});
 
+  Future<Response> login(String email, String password) async =>
+      await apiClient.postData(AppConstants.LOGIN_URI, {'email': email, 'password': password});
+
   Future<Response> registration(AccountModel account) async =>
       await apiClient.postData(AppConstants.REGISTRATION_URI, account.toMap());
 
