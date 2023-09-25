@@ -76,7 +76,7 @@ class AccountPage extends StatelessWidget {
                     // logout
                     const AccountWidget(
                       iconData: Icons.logout,
-                      bgColor: Colors.blueGrey,
+                      bgColor: Colors.redAccent,
                       text: 'Logout',
                     ),
                     SizedBox(height: Dimensions.height20 * 2),
