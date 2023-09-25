@@ -12,8 +12,6 @@ class CartController extends GetxController {
   CartController({required this.cartRepo});
 
   final Map<int, CartModel> _items = {};
-  // TODO Needed?
-  Map<int, CartModel> get getItems => _items;
   List<CartModel> get getCartList => _items.entries.map((e) => e.value).toList();
 
   /// only for local storage cart data
