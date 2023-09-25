@@ -4,7 +4,7 @@ class AppConstants {
   static const String APP_NAME = 'Jokies Foodies';
   static const int APP_Version = 1;
 
-  static const String TOKEN = 'DBtonken';
+  static const String TOKEN = '';
   static const String PHONE = '';
   static const String PASSWORD = '';
 
