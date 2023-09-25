@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const MainFoodPage(),
     // const Center(child: Text('Test Page_1')),
-    const SignInPage(),
+    SignInPage(),
     const CartHistoryPage(),
     const AccountPage(),
   ];
