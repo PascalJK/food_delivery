@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/account_widget.dart';
 import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/text/big.dart';
-import 'package:food_delivery/controllers/auth_controller.dart';
-import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
-import 'package:get/get.dart';
+
+import '../../controllers/account_controller.dart';
 
 class AccountPage extends StatelessWidget {
-  const AccountPage({super.key});
+  AccountPage({super.key});
+
+  final controller = AccountController();
 
   @override
   Widget build(BuildContext context) {
@@ -78,13 +79,7 @@ class AccountPage extends StatelessWidget {
                     Divider(height: Dimensions.height20, thickness: Dimensions.height15),
                     // logout
                     InkWell(
-                      onTap: () {
-                        var controller = Get.find<AuthController>();
-                        if (controller.isUserLoggedIn()) {
-                          controller.clearSharedData();
-                          Get.offNamed(RouteHelper.login);
-                        }
-                      },
+                      onTap: () => controller.logout(),
                       child: const AccountWidget(
                         iconData: Icons.logout,
                         bgColor: Colors.redAccent,
