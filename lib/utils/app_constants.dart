@@ -5,6 +5,8 @@ class AppConstants {
   static const int APP_Version = 1;
 
   static const String TOKEN = 'DBtonken';
+  static const String PHONE = '';
+  static const String PASSWORD = '';
 
   // SharedPrefs Key
   static const String CART_LIST = 'cart-list';
