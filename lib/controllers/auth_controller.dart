@@ -24,4 +24,19 @@ class AuthController extends GetxController {
     isLoading.value = false;
     return responseModel;
   }
+
+  Future<ResponseModel> login(String email, String password) async {
+    isLoading.value = true;
+    var res = await authRepo.login(email, password);
+    late ResponseModel responseModel;
+    if (res.statusCode == 200) {
+      authRepo.saveUserToken(res.body['token']);
+      authRepo.saveUserNumberAndPassword(email, password);
+      responseModel = ResponseModel(true, res.body['token']);
+    } else {
+      responseModel = ResponseModel(false, res.statusText!);
+    }
+    isLoading.value = false;
+    return responseModel;
+  }
 }
