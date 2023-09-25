@@ -1,3 +1,5 @@
+import 'package:food_delivery/pages/auth/sign_in_page.dart';
+import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/pages/food/recommended_food_detail.dart';
@@ -8,6 +10,8 @@ import 'package:get/route_manager.dart';
 class RouteHelper {
   static const initial = '/';
   static const splash = '/splash-page';
+  static const login = '/login';
+  static const register = '/register';
   static const popularFood = '/popular-food';
   static const recommendedFood = '/recommended-food';
   static const cart = '/cart';
@@ -15,6 +19,10 @@ class RouteHelper {
   // ignore: unnecessary_string_interpolations
   static String getInitial() => '$initial';
   static String getPopularFood(int index) => '$popularFood?item=$index';
+  // ignore: unnecessary_string_interpolations
+  static String getLogin() => '$login';
+  // ignore: unnecessary_string_interpolations
+  static String getRegister() => '$register';
   // ignore: unnecessary_string_interpolations
   static String getRecommendedFood() => '$recommendedFood';
 
@@ -27,6 +35,18 @@ class RouteHelper {
     GetPage(
       name: splash,
       page: () => const SplashScreen(),
+    ),
+    // Login-Page
+    GetPage(
+      name: login,
+      page: () => SignInPage(),
+      transition: Transition.fade,
+    ),
+    // Register-Page
+    GetPage(
+      name: register,
+      page: () => SignUpPage(),
+      transition: Transition.fadeIn,
     ),
     // Popular Food Detail
     GetPage(
