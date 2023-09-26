@@ -33,7 +33,7 @@ class AccountModel {
       name: map['f_name'] as String,
       contact: map['phone'] as String,
       email: map['email'] as String,
-      password: map['password'] as String,
+      password: map['password'] ?? '',
       orderCount: map['order_count'] as int,
     );
   }
