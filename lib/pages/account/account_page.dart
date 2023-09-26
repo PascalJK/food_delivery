@@ -30,7 +30,7 @@ class AccountPage extends StatelessWidget {
         ),
       ),
       body: GetBuilder<AccountController>(builder: (c) {
-        return isUserLoggedIn
+        return !isUserLoggedIn
             ? _isNotRegisteredView()
             : Obx(() => c.isLoading.isFalse ? _isRegisteredView(c) : const LoadingIndicator());
       }),
