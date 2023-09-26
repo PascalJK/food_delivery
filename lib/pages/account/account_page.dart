@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import '../../controllers/account_controller.dart';
 
 class AccountPage extends StatelessWidget {
-  AccountPage({super.key});
+  const AccountPage({super.key});
 
   @override
   Widget build(BuildContext context) {

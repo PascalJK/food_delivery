@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     const MainFoodPage(),
     const Center(child: Text('Test Page_1')),
     const CartHistoryPage(),
-    AccountPage(),
+    const AccountPage(),
   ];
 
   final List<PersistentBottomNavBarItem> _barItems = [
