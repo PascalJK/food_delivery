@@ -59,21 +59,21 @@ class AccountPage extends StatelessWidget {
                   AccountWidget(
                     iconData: Icons.account_circle_outlined,
                     bgColor: AppColors.mainColor,
-                    text: 'Suniel Lionel Jobbs',
+                    text: controller.getAccountModel.name,
                   ),
                   SizedBox(height: Dimensions.height10),
                   // phone
-                  const AccountWidget(
+                  AccountWidget(
                     iconData: Icons.phone_outlined,
                     bgColor: Colors.blueAccent,
-                    text: '+(264)817201880',
+                    text: controller.getAccountModel.contact,
                   ),
                   SizedBox(height: Dimensions.height20),
                   // email
                   AccountWidget(
                     iconData: Icons.email_outlined,
                     bgColor: AppColors.yellowColor,
-                    text: 'jokingsuniel@india.bangala',
+                    text: controller.getAccountModel.email,
                   ),
                   SizedBox(height: Dimensions.height20),
                   // address
