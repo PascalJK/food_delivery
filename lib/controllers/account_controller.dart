@@ -22,7 +22,7 @@ class AccountController extends GetxController {
     late ResponseModel responseModel;
     if (res.statusCode == 200) {
       _accountModel = AccountModel.fromMap(res.body);
-      responseModel = ResponseModel(true, 'passed');-
+      responseModel = ResponseModel(true, 'passed');
     } else {
       responseModel = ResponseModel(false, res.statusText!);
     }
