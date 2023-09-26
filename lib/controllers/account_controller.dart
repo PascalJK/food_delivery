@@ -14,7 +14,7 @@ class AccountController extends GetxController {
 
   final RxBool isLoading = false.obs;
 
-  AccountController(this.userRepo);
+  AccountController({required this.userRepo});
 
   Future<ResponseModel> getUserInfo() async {
     isLoading.value = true;
