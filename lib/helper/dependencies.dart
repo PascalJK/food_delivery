@@ -31,7 +31,8 @@ Future init() async {
   // controllers
   // Get.lazyPut(() => AuthController(authRepo: Get.find<AuthRepo>()));
   Get.put(AuthController(authRepo: Get.find<AuthRepo>()));
-  Get.lazyPut(() => AccountController(userRepo: Get.find<UserRepo>()));
+  // Get.lazyPut(() => AccountController(userRepo: Get.find<UserRepo>()));
+  Get.put(AccountController(userRepo: Get.find<UserRepo>()));
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find<PopularProductRepo>()));
   Get.lazyPut(() => RecommendedProductController(recommendedProductRepo: Get.find()));
   Get.lazyPut(() => CartController(cartRepo: Get.find<CartRepo>()));
