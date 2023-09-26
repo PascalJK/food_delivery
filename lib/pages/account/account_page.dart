@@ -4,6 +4,7 @@ import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/loading_indicator.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
@@ -29,10 +30,48 @@ class AccountPage extends StatelessWidget {
         ),
       ),
       body: GetBuilder<AccountController>(builder: (c) {
-        return !isUserLoggedIn
-            ? const Center(child: Text('Logged in u must be to access this page!'))
+        return isUserLoggedIn
+            ? _isNotRegisteredView()
             : Obx(() => c.isLoading.isFalse ? _isRegisteredView(c) : const LoadingIndicator());
       }),
+    );
+  }
+
+  Column _isNotRegisteredView() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: double.maxFinite,
+          height: Dimensions.height20 * 8,
+          margin: EdgeInsets.symmetric(horizontal: Dimensions.width20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Dimensions.radius20),
+            image: const DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/image/signintocontinue.png'),
+            ),
+          ),
+        ),
+        SizedBox(height: Dimensions.height15),
+        const BigText(text: 'Come on, Just Login....!'),
+        SizedBox(height: Dimensions.height15),
+        MaterialButton(
+          padding: EdgeInsets.symmetric(
+            horizontal: Dimensions.height20,
+            vertical: Dimensions.height20,
+          ),
+          minWidth: Dimensions.screenWidth * .8,
+          onPressed: () => Get.toNamed(RouteHelper.login),
+          color: AppColors.mainColor,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
+          child: const BigText(
+            text: 'Sign In',
+            color: Colors.white,
+          ),
+        ),
+      ],
     );
   }
 
