@@ -30,7 +30,7 @@ class AuthRepo {
   Future saveUserNumberAndPassword(String number, String password) async {
     try {
       await preferences.setString(AppConstants.PHONE, number);
-      await preferences.setString(AppConstants.PASSWORD, number);
+      await preferences.setString(AppConstants.PASSWORD, password);
     } catch (e) {
       print(e.toString());
     }
