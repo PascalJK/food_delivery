@@ -1,3 +1,4 @@
+import 'package:food_delivery/pages/address/add_address_page.dart';
 import 'package:food_delivery/pages/auth/sign_in_page.dart';
 import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:food_delivery/pages/cart/cart_page.dart';
@@ -13,6 +14,7 @@ class RouteHelper {
   static const login = '/login';
   static const register = '/register';
   static const popularFood = '/popular-food';
+  static const addAddress = '/add-address';
   static const recommendedFood = '/recommended-food';
   static const cart = '/cart';
 
@@ -67,6 +69,12 @@ class RouteHelper {
     GetPage(
       name: cart,
       page: () => const CartPage(),
+      transition: Transition.fadeIn,
+    ),
+    // Add Address Page
+    GetPage(
+      name: addAddress,
+      page: () => const AddAddressPage(),
       transition: Transition.fadeIn,
     ),
   ];
