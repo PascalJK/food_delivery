@@ -51,12 +51,20 @@ class _AddAddressPageState extends State<AddAddressPage> {
           Container(
             height: 140,
             width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.fromLTRB(5, 5, 5, 0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               border: Border.all(
                 width: 2,
                 color: Theme.of(context).primaryColor,
               ),
+            ),
+            child: Stack(
+              children: [
+                GoogleMap(
+                  initialCameraPosition: CameraPosition(target: _initPos, zoom: 17),
+                )
+              ],
             ),
           ),
         ],
