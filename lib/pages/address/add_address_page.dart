@@ -6,14 +6,14 @@ import 'package:food_delivery/controllers/location_controller.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class AddAdressPage extends StatefulWidget {
-  const AddAdressPage({super.key});
+class AddAddressPage extends StatefulWidget {
+  const AddAddressPage({super.key});
 
   @override
-  State<AddAdressPage> createState() => _AddAdressPageState();
+  State<AddAddressPage> createState() => _AddAddressPageState();
 }
 
-class _AddAdressPageState extends State<AddAdressPage> {
+class _AddAddressPageState extends State<AddAddressPage> {
   final _addressController = TextEditingController();
   final _cPersonName = TextEditingController();
   final _cPersonNumber = TextEditingController();
