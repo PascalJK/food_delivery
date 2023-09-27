@@ -63,6 +63,13 @@ class _AddAddressPageState extends State<AddAddressPage> {
               children: [
                 GoogleMap(
                   initialCameraPosition: CameraPosition(target: _initPos, zoom: 17),
+                  compassEnabled: false,
+                  mapToolbarEnabled: false,
+                  indoorViewEnabled: true,
+                  zoomControlsEnabled: false,
+                  onCameraIdle: () {},
+                  onCameraMove: (position) => _camPos = position,
+                  onMapCreated: (controller) {},
                 )
               ],
             ),
