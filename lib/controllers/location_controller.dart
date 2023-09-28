@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/account_controller.dart';
 import 'package:food_delivery/data/repo/location_repo.dart';
@@ -51,6 +53,18 @@ class LocationController extends GetxController implements GetxService {
     var uc = Get.find<AccountController>();
     cPersonName.text = uc.getAccountModel.name;
     cPersonNumber.text = uc.getAccountModel.contact;
+    // addressController.text = getUserAddress().address;
+  }
+
+  AddressModel getUserAddress() {
+    late AddressModel addressModel;
+    _getAdress = jsonDecode(locationRepo.getUserAddress() ?? '');
+    try {
+      addressModel = AddressModel.fromJson(jsonDecode(locationRepo.getUserAddress() ?? ''));
+    } catch (e) {
+      print(e);
+    }
+    return addressModel;
   }
 
   Future<void> updateCameraPosition(CameraPosition camPos, bool fromAdress) async {
