@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/components/text/big.dart';
+import 'package:food_delivery/components/text/text_input_field.dart';
 import 'package:food_delivery/controllers/location_controller.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -11,10 +14,6 @@ class AddAddressPage extends StatefulWidget {
 }
 
 class _AddAddressPageState extends State<AddAddressPage> {
-  final _addressController = TextEditingController();
-  final _cPersonName = TextEditingController();
-  final _cPersonNumber = TextEditingController();
-
   var _camPos = const CameraPosition(target: LatLng(45.51563, -122.677433), zoom: 17);
   LatLng _initPos = const LatLng(45.51563, -122.677433);
 
@@ -43,40 +42,49 @@ class _AddAddressPageState extends State<AddAddressPage> {
       appBar: AppBar(
         title: const Text('Address Page'),
       ),
-      body: GetBuilder<LocationController>(
-        builder: (c) {
-          return Column(
-            children: [
-              Container(
-                height: 140,
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.fromLTRB(5, 5, 5, 0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    width: 2,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    GoogleMap(
-                      initialCameraPosition: CameraPosition(target: _initPos, zoom: 17),
-                      compassEnabled: false,
-                      mapToolbarEnabled: false,
-                      indoorViewEnabled: true,
-                      zoomControlsEnabled: false,
-                      onCameraIdle: () => c.updateCameraPosition(_camPos, true),
-                      onCameraMove: (position) => _camPos = position,
-                      onMapCreated: (mapController) {c.setMapController(mapController);},
-                    )
-                  ],
+      body: GetBuilder<LocationController>(builder: (c) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // map view
+            Container(
+              height: 140,
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.fromLTRB(5, 5, 5, 0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(
+                  width: 2,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
-            ],
-          );
-        }
-      ),
+              child: Stack(
+                children: [
+                  GoogleMap(
+                    initialCameraPosition: CameraPosition(target: _initPos, zoom: 17),
+                    compassEnabled: false,
+                    mapToolbarEnabled: false,
+                    indoorViewEnabled: true,
+                    zoomControlsEnabled: false,
+                    onCameraIdle: () => c.updateCameraPosition(_camPos, true),
+                    onCameraMove: (position) => _camPos = position,
+                    onMapCreated: (mapController) {
+                      c.setMapController(mapController);
+                    },
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: Dimensions.height20),
+            Padding(
+              padding: EdgeInsets.only(left: Dimensions.width20),
+              child: const BigText(text: 'Delivery Address'),
+            ),
+            SizedBox(height: Dimensions.height15),
+            TextInputField(controller: c.addressController, icon: Icons.map_outlined, hint: 'hint'),
+          ],
+        );
+      }),
     );
   }
 }
