@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/account_controller.dart';
 import 'package:food_delivery/data/repo/location_repo.dart';
 import 'package:food_delivery/models/address_model.dart';
 import 'package:geocoding/geocoding.dart';
@@ -10,6 +11,8 @@ class LocationController extends GetxController implements GetxService {
   final LocationRepo locationRepo;
 
   LocationController({required this.locationRepo});
+
+  // final _accController = Get.find<AccountController>();
 
   final addressController = TextEditingController();
   final cPersonName = TextEditingController();
@@ -44,6 +47,11 @@ class LocationController extends GetxController implements GetxService {
 
   void setMapController(GoogleMapController mapController) => _mapController = mapController;
 
+  loadAccountData() {
+    var uc = Get.find<AccountController>();
+    cPersonName.text = uc.getAccountModel.name;
+    cPersonNumber.text = uc.getAccountModel.contact;
+  }
 
   Future<void> updateCameraPosition(CameraPosition camPos, bool fromAdress) async {
     if (_updateAddressData) {
