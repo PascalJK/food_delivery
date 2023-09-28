@@ -100,45 +100,39 @@ class AccountPage extends StatelessWidget {
                     bgColor: AppColors.mainColor,
                     text: controller.getAccountModel.name,
                   ),
-                  SizedBox(height: Dimensions.height10),
                   // phone
                   AccountWidget(
                     iconData: Icons.phone_outlined,
                     bgColor: Colors.blueAccent,
                     text: controller.getAccountModel.contact,
                   ),
-                  SizedBox(height: Dimensions.height20),
                   // email
                   AccountWidget(
                     iconData: Icons.email_outlined,
                     bgColor: AppColors.yellowColor,
                     text: controller.getAccountModel.email,
                   ),
-                  SizedBox(height: Dimensions.height20),
                   // address
-                  const AccountWidget(
+                  AccountWidget(
                     iconData: Icons.location_on_outlined,
                     bgColor: Colors.orangeAccent,
                     text: 'Filling your address',
+                    onPressed: () => Get.toNamed(RouteHelper.addAddress),
                   ),
-                  SizedBox(height: Dimensions.height20),
                   // message
-                  const AccountWidget(
+                  AccountWidget(
                     iconData: Icons.message_outlined,
                     bgColor: Colors.greenAccent,
                     text: 'Messages',
+                    dividerHeight: Dimensions.height15,
                   ),
-                  Divider(height: Dimensions.height20, thickness: Dimensions.height15),
                   // logout
-                  InkWell(
-                    onTap: () => controller.logout(),
-                    child: const AccountWidget(
-                      iconData: Icons.logout,
-                      bgColor: Colors.redAccent,
-                      text: 'Logout',
-                    ),
+                  AccountWidget(
+                    iconData: Icons.logout,
+                    bgColor: Colors.redAccent,
+                    text: 'Logout',
+                    onPressed: () => controller.logout(),
                   ),
-                  SizedBox(height: Dimensions.height20 * 2),
                 ],
               ),
             ),
