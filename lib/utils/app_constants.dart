@@ -24,6 +24,7 @@ class AppConstants {
   static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
   static const String RECOMMENDED_PRODUCT_URI = '/api/v1/products/recommended';
   static const String GEOCODE_URI = '/api/v1/config/geocode-api';
+  static const String USER_ADDRESS = 'user_address';
 
   static const String UPLOAD_URL = '$BASE_URL/uploads/';
 }
