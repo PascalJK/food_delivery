@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:food_delivery/data/repo/location_repo.dart';
 import 'package:food_delivery/models/address_model.dart';
 import 'package:geocoding/geocoding.dart';
@@ -9,6 +10,10 @@ class LocationController extends GetxController implements GetxService {
   final LocationRepo locationRepo;
 
   LocationController({required this.locationRepo});
+
+  final addressController = TextEditingController();
+  final cPersonName = TextEditingController();
+  final cPersonNumber = TextEditingController();
 
   bool _isLoading = false;
   late Position _position;
@@ -38,6 +43,7 @@ class LocationController extends GetxController implements GetxService {
   get pickPlaceMark => _pickPlacemark;
 
   void setMapController(GoogleMapController mapController) => _mapController = mapController;
+
 
   Future<void> updateCameraPosition(CameraPosition camPos, bool fromAdress) async {
     if (_updateAddressData) {
@@ -75,6 +81,7 @@ class LocationController extends GetxController implements GetxService {
           fromAdress
               ? _placemark = Placemark(name: address)
               : _pickPlacemark = Placemark(name: address);
+          addressController.text = address;
         }
       } catch (e) {
         // print(e.toString());
