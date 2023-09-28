@@ -68,22 +68,29 @@ class LocationController extends GetxController implements GetxService {
               headingAccuracy: 1,
               speed: 1,
               speedAccuracy: 1);
-
-          if (_changeAddress) {
-            var address = await getAdressFromGeoCode(camPos.target);
-          }
         }
-      } catch (e) {}
+
+        if (_changeAddress) {
+          var address = await getAdressFromGeoCode(camPos.target);
+          fromAdress
+              ? _placemark = Placemark(name: address)
+              : _pickPlacemark = Placemark(name: address);
+        }
+      } catch (e) {
+        // print(e.toString());
+      }
     }
   }
 
   Future<String> getAdressFromGeoCode(LatLng latLng) async {
-    var res = await locationRepo.getAddressfromGeocode(latLng);
-    if (res.body['status'] == 'OK') {
-      return res.body['results'][0]['formatted_address'].toString();
-    } else {
-      print('error return getting G-Api');
-    }
-    return '';
+    var res = await placemarkFromCoordinates(latLng.latitude, latLng.longitude);
+    // var res = await locationRepo.getAddressfromGeocode(latLng);
+    // if (res.body['status'] == 'OK') {
+    //   return res.body['results'][0]['formatted_address'].toString();
+    // } else {
+    //   print('error return getting G-Api');
+    // }
+    var loc = res.firstOrNull;
+    return loc == null ? 'null' : '${loc.street}, ${loc.locality}, ${loc.isoCountryCode}';
   }
 }
