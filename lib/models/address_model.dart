@@ -23,9 +23,9 @@ class AddressModel {
     return <String, dynamic>{
       'id': id,
       'type': type,
-      'contactPersonName': contactPersonName,
-      'contactPersonNumber': contactPersonNumber,
-      'address': address,
+      'contact_person_name': contactPersonName,
+      'contact_person_number': contactPersonNumber,
+      'address_type': address,
       'latitude': latitude,
       'longitude': longitude,
     };
@@ -35,9 +35,9 @@ class AddressModel {
     return AddressModel(
       id: map['id'] as int,
       type: map['type'] ?? '',
-      contactPersonName: map['contactPersonName'] ?? '',
-      contactPersonNumber: map['contactPersonNumber'] ?? '',
-      address: map['address'] ?? '',
+      contactPersonName: map['contact_person_name'] ?? '',
+      contactPersonNumber: map['contact_person_number'] ?? '',
+      address: map['address_type'] ?? '',
       latitude: map['latitude'] ?? '',
       longitude: map['longitude'] ?? '',
     );
