@@ -80,6 +80,50 @@ class _AddAddressPageState extends State<AddAddressPage> {
                   ),
                 ),
                 // Text Views
+                Padding(
+                  padding: EdgeInsets.only(left: Dimensions.width20, top: Dimensions.height20),
+                  child: SizedBox(
+                    height: 50,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: c.addressTypeList.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () => controller.setAddressTypeIndex(index),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Dimensions.width20,
+                              vertical: Dimensions.height10,
+                            ),
+                            margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(Dimensions.radius5),
+                              color: context.theme.cardColor,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey[200]!,
+                                  spreadRadius: 1,
+                                  blurRadius: 5,
+                                ),
+                              ],
+                            ),
+                            child: Icon(
+                              index == 0
+                                  ? Icons.home_filled
+                                  : index == 1
+                                      ? Icons.work
+                                      : Icons.location_on,
+                              color: c.addressTypeIndex == index
+                                  ? AppColors.mainColor
+                                  : context.theme.disabledColor,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
                 SizedBox(height: Dimensions.height20),
                 Padding(
                   padding: EdgeInsets.only(left: Dimensions.width20, bottom: Dimensions.height10),
