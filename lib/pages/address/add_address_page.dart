@@ -159,6 +159,24 @@ class _AddAddressPageState extends State<AddAddressPage> {
               ),
             );
           }),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.fromLTRB(Dimensions.width30, 0, Dimensions.width30, 5),
+        child: MaterialButton(
+          padding: EdgeInsets.symmetric(
+            horizontal: Dimensions.height20,
+            vertical: Dimensions.height20,
+          ),
+          onPressed: () => controller.setAddressTypeIndex(1),
+          color: AppColors.mainColor,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
+          child: BigText(
+            text: 'Save address',
+            size: Dimensions.font26,
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }
