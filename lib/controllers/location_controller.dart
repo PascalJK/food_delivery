@@ -31,7 +31,7 @@ class LocationController extends GetxController implements GetxService {
   List<AddressModel> get getAddressList => _addressList;
   late List<AddressModel> _allAddressList = [];
 
-  List<String> _addressTypeList = ['home', 'office', 'other'];
+  final List<String> addressTypeList = ['home', 'office', 'other'];
   int _addressTypeIndex = 0;
 
   late Map<String, dynamic> _getAdress;
@@ -54,6 +54,11 @@ class LocationController extends GetxController implements GetxService {
     cPersonName.text = uc.getAccountModel.name;
     cPersonNumber.text = uc.getAccountModel.contact;
     // addressController.text = getUserAddress().address;
+  }
+
+  void setAddressTypeIndex(int index) {
+    _addressTypeIndex = index;
+    update();
   }
 
   AddressModel getUserAddress() {
