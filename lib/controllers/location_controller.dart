@@ -33,6 +33,7 @@ class LocationController extends GetxController implements GetxService {
 
   final List<String> addressTypeList = ['home', 'office', 'other'];
   int _addressTypeIndex = 0;
+  int get addressTypeIndex => _addressTypeIndex;
 
   late Map<String, dynamic> _getAdress;
   Map get getAdress => _getAdress;
