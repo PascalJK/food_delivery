@@ -78,7 +78,9 @@ class LocationController extends GetxController implements GetxService {
     var response = await locationRepo.addAddress(model);
     ResponseModel responseModel;
     if (response.statusCode == 200) {
+      await getAddressList();
       responseModel = ResponseModel(true, response.body['message']);
+      await saveUserAddress(model);
     } else {
       responseModel = ResponseModel(false, response.statusText!);
       print('error: could not save the address');
@@ -167,4 +169,6 @@ class LocationController extends GetxController implements GetxService {
     }
     update();
   }
+
+  Future saveUserAddress(AddressModel model) async => locationRepo.saveUserAddress(model);
 }
