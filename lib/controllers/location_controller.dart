@@ -62,6 +62,14 @@ class LocationController extends GetxController implements GetxService {
     update();
   }
 
+  addAddress(AddressModel model) async {
+    _isLoading = true;
+    update();
+    await locationRepo.addAddress(model);
+    _isLoading = false;
+    update();
+  }
+
   AddressModel getUserAddress() {
     late AddressModel addressModel;
     _getAdress = jsonDecode(locationRepo.getUserAddress() ?? '');
