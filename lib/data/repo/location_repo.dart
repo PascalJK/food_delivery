@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:food_delivery/data/api/api_client.dart';
 import 'package:food_delivery/models/address_model.dart';
 import 'package:food_delivery/utils/app_constants.dart';
@@ -25,4 +27,9 @@ class LocationRepo {
   }
 
   String? getUserAddress() => sharedPreferences.getString(AppConstants.USER_ADDRESS);
+
+  Future<bool> saveUserAddress(AddressModel model) async {
+    apiClient.updateHeader(sharedPreferences.getString(AppConstants.TOKEN)!);
+    return await sharedPreferences.setString(AppConstants.USER_ADDRESS, jsonEncode(model.toJson()));
+  }
 }
