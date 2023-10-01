@@ -44,7 +44,7 @@ class LocationController extends GetxController implements GetxService {
   bool _changeAddress = true;
 
   get isloading => _isLoading;
-  get position => _position;
+  Position get position => _position;
   get pickPosition => _pickPosition;
   get placeMark => _placemark;
   get pickPlaceMark => _pickPlacemark;
@@ -63,7 +63,14 @@ class LocationController extends GetxController implements GetxService {
     update();
   }
 
-  Future<ResponseModel> addAddress(AddressModel model) async {
+  Future<ResponseModel> addAddress() async {
+    var model = AddressModel(
+      type: addressTypeList[addressTypeIndex],
+      address: addressController.text,
+      latitude: position.latitude.toString(),
+      longitude: position.longitude.toString(),
+    );
+    
     _isLoading = true;
     update();
     var response = await locationRepo.addAddress(model);
