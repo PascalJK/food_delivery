@@ -33,7 +33,7 @@ class AccountController extends GetxController {
 
   void logout() {
     var authController = Get.find<AuthController>();
-    if (authController.isUserLoggedIn()) {
+    if (authController.isUserLoggedIn()) { // TODO Needed?
       authController.clearSharedData();
       Get.find<CartController>().clear();
       Get.find<CartController>().clearCartHistory();
