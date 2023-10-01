@@ -72,6 +72,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                           mapToolbarEnabled: false,
                           indoorViewEnabled: true,
                           zoomControlsEnabled: false,
+                          myLocationEnabled: true,
                           onCameraIdle: () => c.updateCameraPosition(_camPos, true),
                           onCameraMove: (position) => _camPos = position,
                           onMapCreated: (mapController) {
