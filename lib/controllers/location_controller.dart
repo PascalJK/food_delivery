@@ -29,8 +29,10 @@ class LocationController extends GetxController implements GetxService {
   Placemark _pickPlacemark = Placemark();
 
   List<AddressModel> _addressList = [];
-  List<AddressModel> get getAddressList => _addressList;
+  List<AddressModel> get addressList => _addressList;
+
   late List<AddressModel> _allAddressList = [];
+  List<AddressModel> get allAddressList => _allAddressList;
 
   final List<String> addressTypeList = ['home', 'office', 'other'];
   int _addressTypeIndex = 0;
@@ -70,7 +72,7 @@ class LocationController extends GetxController implements GetxService {
       latitude: position.latitude.toString(),
       longitude: position.longitude.toString(),
     );
-    
+
     _isLoading = true;
     update();
     var response = await locationRepo.addAddress(model);
@@ -151,5 +153,18 @@ class LocationController extends GetxController implements GetxService {
     // }
     var loc = res.firstOrNull;
     return loc == null ? 'null' : '${loc.street}, ${loc.locality}, ${loc.isoCountryCode}';
+  }
+
+  Future getAddressList() async {
+    var response = await locationRepo.getAllAddresses();
+    _addressList = [];
+    _allAddressList = [];
+    if (response.statusCode == 200) {
+      response.body.foreach((adress) {
+        _addressList.add(AddressModel.fromJson(adress));
+        _allAddressList.add(AddressModel.fromJson(adress));
+      });
+    }
+    update();
   }
 }
