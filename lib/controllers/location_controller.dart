@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/account_controller.dart';
 import 'package:food_delivery/data/repo/location_repo.dart';
 import 'package:food_delivery/models/address_model.dart';
+import 'package:food_delivery/models/response_model.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -62,12 +63,20 @@ class LocationController extends GetxController implements GetxService {
     update();
   }
 
-  addAddress(AddressModel model) async {
+  Future<ResponseModel> addAddress(AddressModel model) async {
     _isLoading = true;
     update();
-    await locationRepo.addAddress(model);
+    var response = await locationRepo.addAddress(model);
+    ResponseModel responseModel;
+    if (response.statusCode == 200) {
+      responseModel = ResponseModel(true, response.body['message']);
+    } else {
+      responseModel = ResponseModel(false, response.statusText!);
+      print('error: could not save the address');
+    }
     _isLoading = false;
     update();
+    return responseModel;
   }
 
   AddressModel getUserAddress() {
