@@ -29,7 +29,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
     // if user model is null first get user info...
     // if (uc.getAccountModel.isUndefinedOrNull) {}
 
-    if (lc.getAddressList.isNotEmpty) {
+    if (lc.addressList.isNotEmpty) {
       _camPos = CameraPosition(
           target: LatLng(
         double.parse(lc.getAdress['latitude']),
