@@ -22,10 +22,10 @@ class AddressModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'type': type,
+      'address': address,
       'contact_person_name': contactPersonName,
       'contact_person_number': contactPersonNumber,
-      'address_type': address,
+      'address_type': type,
       'latitude': latitude,
       'longitude': longitude,
     };
@@ -34,10 +34,10 @@ class AddressModel {
   factory AddressModel.fromMap(Map<String, dynamic> map) {
     return AddressModel(
       id: map['id'] as int,
-      type: map['type'] ?? '',
+      address: map['address'] ?? '',
       contactPersonName: map['contact_person_name'] ?? '',
       contactPersonNumber: map['contact_person_number'] ?? '',
-      address: map['address_type'] ?? '',
+      type: map['address_type'] ?? '',
       latitude: map['latitude'] ?? '',
       longitude: map['longitude'] ?? '',
     );
