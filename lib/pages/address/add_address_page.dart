@@ -166,7 +166,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
             horizontal: Dimensions.height20,
             vertical: Dimensions.height20,
           ),
-          onPressed: () => controller.setAddressTypeIndex(1),
+          onPressed: () => controller.addAddress(),
           color: AppColors.mainColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
