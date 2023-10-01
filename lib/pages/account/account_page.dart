@@ -4,6 +4,7 @@ import 'package:food_delivery/components/app_icon.dart';
 import 'package:food_delivery/components/loading_indicator.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
+import 'package:food_delivery/controllers/location_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -113,12 +114,15 @@ class AccountPage extends StatelessWidget {
                     text: controller.getAccountModel.email,
                   ),
                   // address
-                  AccountWidget(
-                    iconData: Icons.location_on_outlined,
-                    bgColor: Colors.orangeAccent,
-                    text: 'Filling your address',
-                    onPressed: () => Get.toNamed(RouteHelper.addAddress),
-                  ),
+                  GetBuilder<LocationController>(builder: (lController) {
+                    var txt = lController.addressList.isEmpty ? 'Fill in your' : 'Your';
+                    return AccountWidget(
+                      iconData: Icons.location_on_outlined,
+                      bgColor: Colors.orangeAccent,
+                      text: '$txt address',
+                      onPressed: () => Get.toNamed(RouteHelper.addAddress),
+                    );
+                  }),
                   // message
                   AccountWidget(
                     iconData: Icons.message_outlined,
