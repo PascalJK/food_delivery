@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/components/custom_snackbar.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/text_input_field.dart';
 import 'package:food_delivery/controllers/location_controller.dart';
@@ -166,7 +167,14 @@ class _AddAddressPageState extends State<AddAddressPage> {
             horizontal: Dimensions.height20,
             vertical: Dimensions.height20,
           ),
-          onPressed: () => controller.addAddress(),
+          onPressed: () => controller.addAddress().then((response) {
+            if (response.getSuccess) {
+              Get.back();
+              showCustomSnackBar(title: 'Success', 'Address info saved');
+            } else {
+              showCustomSnackBar('Could not save address');
+            }
+          }),
           color: AppColors.mainColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(Dimensions.radius15))),
