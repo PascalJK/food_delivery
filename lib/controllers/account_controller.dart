@@ -1,4 +1,5 @@
 import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/controllers/location_controller.dart';
 import 'package:food_delivery/models/account_model.dart';
 import 'package:get/get.dart';
 
@@ -36,6 +37,7 @@ class AccountController extends GetxController {
       authController.clearSharedData();
       Get.find<CartController>().clear();
       Get.find<CartController>().clearCartHistory();
+      Get.find<LocationController>().clearAddressList();
       Get.offNamed(RouteHelper.login);
     }
   }
