@@ -49,7 +49,7 @@ class LocationController extends GetxController implements GetxService {
 
   get isloading => _isLoading;
   Position get position => _position;
-  get pickPosition => _pickPosition;
+  Position get pickPosition => _pickPosition;
   get placeMark => _placemark;
   Placemark get pickPlaceMark => _pickPlacemark;
 
