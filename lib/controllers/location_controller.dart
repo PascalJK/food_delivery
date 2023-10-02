@@ -43,7 +43,7 @@ class LocationController extends GetxController implements GetxService {
 
   late GoogleMapController _mapController;
   GoogleMapController get mapController => _mapController;
-  
+
   bool _updateAddressData = true;
   bool _changeAddress = true;
 
@@ -51,7 +51,7 @@ class LocationController extends GetxController implements GetxService {
   Position get position => _position;
   get pickPosition => _pickPosition;
   get placeMark => _placemark;
-  get pickPlaceMark => _pickPlacemark;
+  Placemark get pickPlaceMark => _pickPlacemark;
 
   void setMapController(GoogleMapController mapController) => _mapController = mapController;
 
@@ -146,6 +146,8 @@ class LocationController extends GetxController implements GetxService {
       } catch (e) {
         // print(e.toString());
       }
+      _isLoading = false;
+      update();
     }
   }
 
