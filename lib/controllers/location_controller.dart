@@ -71,6 +71,8 @@ class LocationController extends GetxController implements GetxService {
       address: addressController.text,
       latitude: position.latitude.toString(),
       longitude: position.longitude.toString(),
+      contactPersonName: cPersonName.text,
+      contactPersonNumber: cPersonNumber.text,
     );
 
     _isLoading = true;
@@ -92,9 +94,9 @@ class LocationController extends GetxController implements GetxService {
 
   AddressModel getUserAddress() {
     late AddressModel addressModel;
-    _getAdress = jsonDecode(locationRepo.getUserAddress() ?? '');
+    _getAdress = jsonDecode(locationRepo.getUserAddress());
     try {
-      addressModel = AddressModel.fromJson(jsonDecode(locationRepo.getUserAddress() ?? ''));
+      addressModel = AddressModel.fromMap(_getAdress);
     } catch (e) {
       print(e);
     }
@@ -162,10 +164,14 @@ class LocationController extends GetxController implements GetxService {
     _addressList = [];
     _allAddressList = [];
     if (response.statusCode == 200) {
-      response.body.foreach((adress) {
-        _addressList.add(AddressModel.fromJson(adress));
-        _allAddressList.add(AddressModel.fromJson(adress));
-      });
+      for (var adress in response.body) {
+        _addressList.add(AddressModel.fromMap(adress));
+        _allAddressList.add(AddressModel.fromMap(adress));
+      }
+      // response.body.forEach((adress) {
+      //   _addressList.add(AddressModel.fromJson(adress));
+      //   _allAddressList.add(AddressModel.fromJson(adress));
+      // });
     }
     update();
   }
