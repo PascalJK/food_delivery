@@ -33,7 +33,7 @@ class AddressModel {
 
   factory AddressModel.fromMap(Map<String, dynamic> map) {
     return AddressModel(
-      id: map['id'] as int,
+      id: map['id'],
       address: map['address'] ?? '',
       contactPersonName: map['contact_person_name'] ?? '',
       contactPersonNumber: map['contact_person_number'] ?? '',
