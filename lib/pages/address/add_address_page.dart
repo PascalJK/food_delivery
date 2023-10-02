@@ -3,6 +3,8 @@ import 'package:food_delivery/components/custom_snackbar.dart';
 import 'package:food_delivery/components/text/big.dart';
 import 'package:food_delivery/components/text/text_input_field.dart';
 import 'package:food_delivery/controllers/location_controller.dart';
+import 'package:food_delivery/pages/address/pick_address_map.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:get/get.dart';
@@ -75,6 +77,8 @@ class _AddAddressPageState extends State<AddAddressPage> {
                           indoorViewEnabled: true,
                           zoomControlsEnabled: false,
                           myLocationEnabled: true,
+                          onTap: (arg) => Get.toNamed(RouteHelper.pickAddressMap,
+                              arguments: PickAddressMap(googleMapController: c.mapController)),
                           onCameraIdle: () => c.updateCameraPosition(_camPos, true),
                           onCameraMove: (position) => _camPos = position,
                           onMapCreated: (mapController) {
