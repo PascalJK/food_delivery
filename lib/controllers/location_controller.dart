@@ -178,6 +178,11 @@ class LocationController extends GetxController implements GetxService {
 
   Future saveUserAddress(AddressModel model) async => locationRepo.saveUserAddress(model);
 
+// Needed??
+  void getUserAddressFromLocalStorage() {
+    if (locationRepo.getUserAddress().isEmpty) saveUserAddress(addressList.last);
+  }
+
   void clearAddressList() {
     _addressList.clear();
     _allAddressList.clear();
