@@ -7,6 +7,7 @@ class AppConstants {
   static const String TOKEN = 'token';
   static const String PHONE = 'phone';
   static const String PASSWORD = 'password';
+  static const String USER_ADDRESS = 'user_address';
 
   // SharedPrefs Key
   static const String CART_LIST = 'cart-list';
@@ -24,7 +25,6 @@ class AppConstants {
   static const String POPULAR_PRODUCT_URI = '/api/v1/products/popular';
   static const String RECOMMENDED_PRODUCT_URI = '/api/v1/products/recommended';
   static const String GEOCODE_URI = '/api/v1/config/geocode-api';
-  static const String USER_ADDRESS = 'user_address';
   static const String ADD_USER_ADDRESS_URI = '/api/v1/customer/address/add';
   static const String ADDRESS_LIST_URI = '/api/v1/customer/address/list';
 
