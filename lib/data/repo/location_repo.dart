@@ -14,7 +14,7 @@ class LocationRepo {
   LocationRepo({required this.apiClient, required this.sharedPreferences});
 
   Future<Response> addAddress(AddressModel model) async {
-    return await apiClient.post(AppConstants.ADD_USER_ADDRESS_URI, model.toJson());
+    return await apiClient.postData(AppConstants.ADD_USER_ADDRESS_URI, model.toJson());
   }
 
   Future<Response> getAddressfromGeocode(LatLng latLng) async {
