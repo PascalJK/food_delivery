@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
     this.onPressed,
     this.transparent = false,
     required this.text,
-    required this.margin,
+    this.margin = EdgeInsets.zero,
     this.height,
     this.width,
     this.fontSize,
