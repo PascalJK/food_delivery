@@ -30,6 +30,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
     // if (uc.getAccountModel.isUndefinedOrNull) {}
 
     if (lc.addressList.isNotEmpty) {
+      lc.getUserAddressFromLocalStorage();
       lc.getUserAddress();
       _camPos = CameraPosition(
           target: LatLng(
