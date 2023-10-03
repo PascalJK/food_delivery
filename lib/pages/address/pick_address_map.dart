@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/components/custom_button.dart';
 import 'package:food_delivery/controllers/location_controller.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -83,6 +84,20 @@ class PickAddressMap extends StatelessWidget {
                 ),
               ),
             ),
+            Positioned(
+                bottom: 200,
+                left: Dimensions.width20,
+                right: Dimensions.width20,
+                child: CustomButton(
+                  text: 'Pick Address',
+                  onPressed: c.isloading
+                      ? null
+                      : () {
+                          if (c.pickPosition.latitude != 0 && c.pickPlaceMark.name != null) {
+                            googleMapController.moveCamera(CameraUpdate.newCameraPosition(_camPos));
+                          }
+                        },
+                ))
           ],
         ),
       );
