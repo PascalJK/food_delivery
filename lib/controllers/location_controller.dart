@@ -182,6 +182,13 @@ class LocationController extends GetxController implements GetxService {
 
   Future saveUserAddress(AddressModel model) async => locationRepo.saveUserAddress(model);
 
+  void setAddAddressData() {
+    _position = _pickPosition;
+    _placemark = _pickPlacemark;
+    _updateAddressData = false;
+    update();
+  }
+
 // Needed??
   void getUserAddressFromLocalStorage() {
     if (locationRepo.getUserAddress().isEmpty) saveUserAddress(addressList.last);

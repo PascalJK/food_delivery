@@ -96,6 +96,8 @@ class PickAddressMap extends StatelessWidget {
                           if (c.pickPosition.latitude != 0 && c.pickPlaceMark.name != null) {
                             googleMapController.moveCamera(CameraUpdate.newCameraPosition(_camPos));
                           }
+                          c.setAddAddressData();
+                          Get.back();
                         },
                 ))
           ],
