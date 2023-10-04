@@ -85,7 +85,7 @@ class PickAddressMap extends StatelessWidget {
               ),
             ),
             Positioned(
-                bottom: 200,
+                bottom: 50,
                 left: Dimensions.width20,
                 right: Dimensions.width20,
                 child: CustomButton(
