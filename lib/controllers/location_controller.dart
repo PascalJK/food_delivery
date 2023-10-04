@@ -123,7 +123,7 @@ class LocationController extends GetxController implements GetxService {
               speed: 1,
               speedAccuracy: 1);
         } else {
-          _position = Position(
+          _pickPosition = Position(
               longitude: camPos.target.longitude,
               latitude: camPos.target.latitude,
               timestamp: DateTime.now(),
@@ -148,6 +148,8 @@ class LocationController extends GetxController implements GetxService {
       }
       _isLoading = false;
       update();
+    } else {
+      _updateAddressData = true;
     }
   }
 
