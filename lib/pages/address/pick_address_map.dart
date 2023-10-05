@@ -8,7 +8,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class PickAddressMap extends StatelessWidget {
   final GoogleMapController googleMapController;
-  PickAddressMap({super.key, required this.googleMapController});
+  final bool fromAddress;
+  PickAddressMap({super.key, required this.googleMapController, required this.fromAddress});
   var _camPos = const CameraPosition(target: LatLng(45.51563, -122.677433), zoom: 17);
   late LatLng _initPos = const LatLng(45.51563, -122.677433);
 

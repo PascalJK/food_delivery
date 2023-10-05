@@ -78,7 +78,10 @@ class _AddAddressPageState extends State<AddAddressPage> {
                           zoomControlsEnabled: false,
                           myLocationEnabled: true,
                           onTap: (arg) => Get.toNamed(RouteHelper.pickAddressMap,
-                              arguments: PickAddressMap(googleMapController: c.mapController)),
+                              arguments: PickAddressMap(
+                                googleMapController: c.mapController,
+                                fromAddress: true,
+                              )),
                           onCameraIdle: () => c.updateCameraPosition(_camPos, true),
                           onCameraMove: (position) => _camPos = position,
                           onMapCreated: (mapController) {
