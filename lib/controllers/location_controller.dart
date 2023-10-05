@@ -53,6 +53,10 @@ class LocationController extends GetxController implements GetxService {
   get placeMark => _placemark;
   Placemark get pickPlaceMark => _pickPlacemark;
 
+  bool isServiceLoading = false; // for service zone
+  bool inZone = false; // whether the user is in service zone or not
+  bool buttonDisabled = true; // showing and hiding the btn as map loads
+
   void setMapController(GoogleMapController mapController) => _mapController = mapController;
 
   loadAccountData() {
@@ -136,6 +140,9 @@ class LocationController extends GetxController implements GetxService {
               speedAccuracy: 1);
         }
 
+        var res = await getZone(camPos.target, false);
+        buttonDisabled = res.getSuccess;
+
         if (_changeAddress) {
           var address = await getAdressFromGeoCode(camPos.target);
           fromAdress
@@ -194,6 +201,13 @@ class LocationController extends GetxController implements GetxService {
 // Needed??
   void getUserAddressFromLocalStorage() {
     if (locationRepo.getUserAddress().isEmpty) saveUserAddress(addressList.last);
+  }
+
+  Future<ResponseModel> getZone(LatLng latLng, bool markerLoad) async {
+    late ResponseModel rm;
+    // await
+    rm = ResponseModel(true, 'passed');
+    return rm;
   }
 
   void clearAddressList() {
