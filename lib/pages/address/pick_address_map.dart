@@ -99,8 +99,12 @@ class PickAddressMap extends StatelessWidget {
   Widget pickLocationBtn(LocationController c) {
     return c.isServiceLoading
         ? CustomButton(
-            text: 'Pick Address',
-            onPressed: c.isloading
+            text: c.inZone
+                ? fromAddress
+                    ? 'Pick Address'
+                    : 'Pick Location'
+                : 'Not Available in your Area',
+            onPressed: c.buttonDisabled || c.isloading
                 ? null
                 : () {
                     if (c.pickPosition.latitude != 0 && c.pickPlaceMark.name != null) {
