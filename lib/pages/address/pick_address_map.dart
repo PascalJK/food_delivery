@@ -88,21 +88,25 @@ class PickAddressMap extends StatelessWidget {
                 bottom: 50,
                 left: Dimensions.width20,
                 right: Dimensions.width20,
-                child: CustomButton(
-                  text: 'Pick Address',
-                  onPressed: c.isloading
-                      ? null
-                      : () {
-                          if (c.pickPosition.latitude != 0 && c.pickPlaceMark.name != null) {
-                            googleMapController.moveCamera(CameraUpdate.newCameraPosition(_camPos));
-                          }
-                          c.setAddAddressData();
-                          Get.back();
-                        },
-                ))
+                child: pickLocationBtn(c))
           ],
         ),
       );
     });
+  }
+
+  Widget pickLocationBtn(LocationController c) {
+    return CustomButton(
+      text: 'Pick Address',
+      onPressed: c.isloading
+          ? null
+          : () {
+              if (c.pickPosition.latitude != 0 && c.pickPlaceMark.name != null) {
+                googleMapController.moveCamera(CameraUpdate.newCameraPosition(_camPos));
+              }
+              c.setAddAddressData();
+              Get.back();
+            },
+    );
   }
 }
