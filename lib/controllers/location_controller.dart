@@ -145,9 +145,7 @@ class LocationController extends GetxController implements GetxService {
 
         if (_changeAddress) {
           var address = await getAdressFromGeoCode(camPos.target);
-          fromAdress
-              ? _placemark = Placemark(name: address)
-              : _pickPlacemark = Placemark(name: address);
+          fromAdress ? _placemark = Placemark(name: address) : _pickPlacemark = Placemark(name: address);
           addressController.text = address;
         }
       } catch (e) {
